@@ -1,0 +1,129 @@
+---
+interface Props {
+  text: string;
+  href?: string;
+  class?: string;
+  theme?: 'primary' | 'white';
+}
+
+const {
+  text,
+  href = '#',
+  class: className = '',
+  theme = 'primary',
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['arrow-button', className]}
+  data-variant={theme}
+>
+  <span class="arrow-button__label">{text}</span>
+  <span class="arrow-button__icon" aria-hidden="true">
+    <span class="arrow-button__icon-track">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M6 18 18 6M9 6h9v9" />
+      </svg>
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M6 18 18 6M9 6h9v9" />
+      </svg>
+    </span>
+  </span>
+</a>
+
+<style>
+  .arrow-button {
+    --button-background: var(--color-red);
+    --button-foreground: #fff;
+    --button-hover: #df463e;
+    --icon-divider: rgba(255, 255, 255, 0.82);
+
+    display: inline-flex;
+    align-items: center;
+    align-self: var(--arrow-button-align, flex-start);
+    width: fit-content;
+    min-height: 48px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    background: var(--button-background);
+    color: var(--button-foreground);
+    font-family: inherit;
+    font-size: var(--text-base);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background-color 220ms ease;
+  }
+
+  .arrow-button[data-variant='white'] {
+    --button-background: #fff;
+    --button-foreground: var(--color-red);
+    --button-hover: #fff5f4;
+    --icon-divider: rgba(206, 48, 40, 0.58);
+  }
+
+  .arrow-button__label {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 22px;
+    white-space: nowrap;
+  }
+
+  .arrow-button__icon {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    overflow: hidden;
+    border-left: 2px solid var(--icon-divider);
+  }
+
+  .arrow-button__icon-track {
+    position: absolute;
+    inset: 0;
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .arrow-button svg {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .arrow-button svg:nth-child(2) {
+    transform: translate(-48px, 48px);
+  }
+
+  .arrow-button:hover {
+    background: var(--button-hover);
+  }
+
+  .arrow-button:hover .arrow-button__icon-track {
+    transform: translate(48px, -48px);
+  }
+
+  .arrow-button:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--color-red) 34%, transparent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arrow-button,
+    .arrow-button__icon-track {
+      transition: none;
+    }
+  }
+</style>

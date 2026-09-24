@@ -1,0 +1,313 @@
+/* =========================================
+   CONTACT PAGE — Form-specific layout
+   ========================================= */
+
+/* ─── Contact Header ─── */
+.contact-header {
+    max-width: 600px;
+    margin: 0 auto var(--sp-64) auto;
+    text-align: center;
+}
+.contact-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--sp-24);
+}
+.contact-intro p {
+    margin-bottom: var(--sp-8);
+    line-height: 1.6;
+    color: var(--text-color);
+}
+.time-estimate {
+    margin-top: var(--sp-16);
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+.time-estimate .note {
+    color: var(--text-color);
+    opacity: 0.6;
+    font-weight: 400;
+    margin-left: var(--sp-8);
+}
+.general-contact-link {
+    margin-top: var(--sp-24);
+}
+.general-contact-link a {
+    font-weight: 500;
+    font-size: var(--text-sm);
+}
+
+/* ─── Progress Indicator ─── */
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto var(--sp-64) auto;
+}
+.progress-track {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background-color: var(--border-color);
+    z-index: 1;
+}
+.progress-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-8);
+}
+.step-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-color);
+    transition: all var(--ease-default);
+}
+.step-label {
+    font-size: var(--text-xs);
+    color: var(--text-color);
+    opacity: 0.6;
+    font-weight: 500;
+}
+.progress-step.active .step-circle {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    color: #fff;
+}
+.progress-step.active .step-label {
+    opacity: 1;
+    color: var(--title-color);
+}
+.progress-step.completed .step-circle {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    color: #fff;
+}
+
+/* ─── Form Container ─── */
+.inquiry-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    border-radius: var(--radius-lg);
+}
+.form-step {
+    animation: fadeIn var(--ease-slow);
+}
+
+/* ─── Step Header ─── */
+.step-header { margin-bottom: var(--sp-40); }
+.step-subtitle {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-red);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--sp-8);
+}
+.step-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--sp-12);
+}
+.step-desc {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ─── Form Fields ─── */
+.form-grid {
+    display: grid;
+    gap: var(--sp-24);
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-8);
+}
+.form-group label {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--title-color);
+}
+.form-question {
+    font-size: var(--text-base) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--sp-8);
+}
+.form-question .note {
+    font-size: var(--text-xs);
+    font-weight: 400;
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-left: var(--sp-8);
+}
+
+/* ─── Options Layout ─── */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-12);
+}
+.options-grid-small {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-12);
+}
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-8);
+}
+
+/* ─── Form Actions ─── */
+.form-actions {
+    margin-top: var(--sp-48);
+    display: flex;
+    align-items: center;
+}
+.form-actions.right { justify-content: flex-end; }
+.form-actions.space-between { justify-content: space-between; }
+
+/* ─── Step 3: Readiness ─── */
+.section-heading {
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    color: var(--color-red);
+    margin-bottom: var(--sp-4);
+}
+.section-subheading {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--sp-8);
+}
+.section-note {
+    font-size: var(--text-sm);
+    color: var(--text-color);
+    margin-bottom: var(--sp-24);
+}
+.readiness-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-12);
+}
+.readiness-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--sp-12);
+    border-bottom: 1px solid var(--border-color);
+}
+.readiness-label {
+    font-weight: 500;
+    font-size: var(--text-sm);
+}
+.dynamic-guidance {
+    margin-top: var(--sp-24);
+    padding: var(--sp-24);
+    background-color: var(--color-blue-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-blue);
+}
+.dynamic-guidance h4 {
+    margin-bottom: var(--sp-8);
+    font-size: var(--text-sm);
+    color: var(--color-blue);
+}
+.dynamic-guidance p {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+}
+
+/* ─── Multi Input ─── */
+.multi-input {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-8);
+}
+.multi-input .form-input { min-width: 0; text-align: center; }
+.multi-input .times { color: var(--text-color); }
+
+/* ─── File Upload ─── */
+.file-upload-area { position: relative; }
+.file-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-40) var(--sp-24);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--ease-fast);
+    background-color: var(--bg-muted);
+}
+[data-theme="dark"] .file-label { background-color: var(--bg-muted); }
+.file-label:hover {
+    border-color: var(--color-blue);
+    background-color: var(--color-blue-light);
+}
+.file-label .icon { font-size: var(--text-3xl); margin-bottom: var(--sp-12); color: var(--color-blue); }
+.file-label .text { font-size: var(--text-base); font-weight: 500; margin-bottom: var(--sp-4); }
+.file-label .subtext { font-size: var(--text-xs); color: var(--text-color); }
+
+/* ─── Review Summary ─── */
+.summary-content {
+    background-color: var(--bg-muted);
+    border-radius: var(--radius-md);
+    padding: var(--sp-32);
+}
+[data-theme="dark"] .summary-content { background-color: var(--bg-muted); }
+.summary-block { margin-bottom: var(--sp-24); }
+.summary-block:last-child { margin-bottom: 0; }
+.summary-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--sp-4);
+}
+.summary-value {
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--title-color);
+}
+.summary-ul { list-style: none; padding: 0; margin: 0; }
+.summary-ul li {
+    font-size: var(--text-sm);
+    margin-bottom: var(--sp-4);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-8);
+}
+.summary-ul li.checked { color: var(--color-green); }
+.summary-ul li.unchecked { color: var(--text-color); opacity: 0.7; }
+
+/* ─── Success State ─── */
+.success-state { text-align: center; padding: var(--sp-64) 0; }
+.success-icon { color: var(--color-green); font-size: var(--text-6xl); margin-bottom: var(--sp-24); }
+.success-icon .material-symbols-outlined { font-size: var(--text-6xl); }
+.success-title { font-size: var(--text-3xl); margin-bottom: var(--sp-16); }
+.success-desc {
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* ─── Note helper ─── */
+.note {
+    font-size: var(--text-xs);
+    color: var(--text-color);
+    opacity: 0.6;
+}

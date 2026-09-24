@@ -1,0 +1,215 @@
+---
+import ArrowButton from './ArrowButton.astro';
+import { engineeringEvents, normalizeEngineeringRecords } from '../data/engineering-records';
+
+export interface Props {
+  lang?: 'zh' | 'en';
+}
+
+const { lang = 'zh' } = Astro.props;
+const isEnglish = lang === 'en';
+const locale = isEnglish ? 'en' : 'zh';
+const events = normalizeEngineeringRecords(engineeringEvents);
+const formatEventDate = (date: string) => {
+  const [year, month, day] = date.split('-').map(Number);
+  return isEnglish
+    ? new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(year, month - 1, day))
+    : `${year}年${month}月${day}日`;
+};
+
+const copy = isEnglish
+  ? {
+      eyebrow: 'SEISMIC RECORDS',
+      title: 'Understanding protection-system performance through past earthquakes',
+      lead: 'VIO protection systems have long been deployed across a range of equipment and facilities, and have experienced multiple real-world earthquakes. Epicentral distance, site intensity, and the installed protection configuration provide context for understanding system performance and application experience under different seismic conditions.',
+      cta: 'View All Cases',
+      timeline: 'Earthquake event timeline, newest first',
+      event: 'EVENT',
+      exposure: 'EXPOSURE',
+      eventDate: 'Date',
+      magnitude: 'Magnitude',
+      eventSource: 'Event source',
+      epicenterLocation: 'Epicenter location',
+      depth: 'Focal depth',
+      maximumIntensity: 'Maximum intensity',
+      distance: 'Epicentral distance',
+      intensity: 'Site intensity',
+      protection: 'Protection system',
+      selectSite: 'Select project site',
+      mapLabel: 'Project sites and earthquake epicenter',
+      siteLabel: 'Project site',
+      epicenterLabel: 'Earthquake epicenter',
+    }
+  : {
+      eyebrow: 'SEISMIC RECORDS',
+      title: '透過歷次地震事件，了解防護系統表現',
+      lead: '唯創的防護系統長期應用於不同設備與場域，並曾歷經多次實際地震事件。透過震央距離、場址震度與實際防護配置等資訊，可進一步了解系統在不同地震條件下的實際表現與應用經驗。',
+      cta: '查看所有案例',
+      timeline: '地震事件時間軸，由新至舊',
+      event: 'EVENT／事件',
+      exposure: 'EXPOSURE／暴露條件',
+      eventDate: '發生日期',
+      magnitude: '芮氏規模',
+      eventSource: '事件來源',
+      epicenterLocation: '震央位置',
+      depth: '震源深度',
+      maximumIntensity: '最大震度',
+      distance: '距震央',
+      intensity: '場址震度',
+      protection: '防護系統',
+      selectSite: '選擇工程場址',
+      mapLabel: '工程場址與地震震央位置',
+      siteLabel: '工程場址',
+      epicenterLabel: '地震震央',
+    };
+---
+
+<section class="engineering-evidence" data-engineering-evidence data-language-section="records">
+  <div class="engineering-evidence__shell">
+    <header class="engineering-evidence__header">
+      <div class="engineering-evidence__intro">
+        <p class="engineering-evidence__eyebrow en-text">{copy.eyebrow}</p>
+        <h2 class:list={['engineering-evidence__title', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{copy.title}</h2>
+        <p class:list={['engineering-evidence__lead', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{copy.lead}</p>
+      </div>
+      <ArrowButton text={copy.cta} href="/contact/?topic=engineering-records" class="engineering-evidence__cta" />
+    </header>
+
+    <nav class="engineering-evidence__timeline" aria-label={copy.timeline}>
+      {events.map((event, index) => (
+        <button type="button" class:list={['engineering-evidence__timeline-item', { 'is-active': index === 0 }]} data-evidence-event={event.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+          <span class="engineering-evidence__timeline-year en-text">{event.date.slice(0, 4)}</span>
+          <span class="engineering-evidence__timeline-dot" aria-hidden="true"></span>
+          <span class:list={['engineering-evidence__timeline-name', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{event.shortName[locale]}</span>
+        </button>
+      ))}
+    </nav>
+
+    <div class="engineering-evidence__record" id="engineering-records-map">
+      <section class="engineering-evidence__column engineering-evidence__column--event" aria-label={copy.event}>
+        <div aria-live="polite">
+          {events.map((event, index) => (
+            <article class="engineering-evidence__event-panel" data-evidence-event-panel={event.id} hidden={index !== 0}>
+              <h3 class:list={{ 'en-text': isEnglish, 'tc-text': !isEnglish }}>{event.name[locale]}</h3>
+              {event.details ? (
+                <dl class="engineering-evidence__event-facts engineering-evidence__event-facts--detailed">
+                  <div><dt>{copy.eventDate}</dt><dd><time class:list={{ 'en-text': isEnglish, 'tc-text': !isEnglish }} datetime={event.date}>{formatEventDate(event.date)}</time></dd></div>
+                  <div><dt>{copy.epicenterLocation}</dt><dd>{event.details.epicenterLocation[locale]}</dd></div>
+                  <div><dt>{copy.magnitude}</dt><dd>{event.details.magnitude[locale]}</dd></div>
+                  <div><dt>{copy.depth}</dt><dd>{event.details.depth[locale]}</dd></div>
+                  <div><dt>{copy.maximumIntensity}</dt><dd>{event.details.maximumIntensity[locale]}</dd></div>
+                </dl>
+              ) : (
+                <dl class="engineering-evidence__event-facts">
+                  <div><dt>{copy.eventDate}</dt><dd><time class:list={{ 'en-text': isEnglish, 'tc-text': !isEnglish }} datetime={event.date}>{formatEventDate(event.date)}</time></dd></div>
+                  <div><dt>{copy.magnitude}</dt><dd class="en-text">M{event.magnitude}</dd></div>
+                  <div><dt>{copy.eventSource}</dt><dd>{event.source.label[locale]}</dd></div>
+                </dl>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="engineering-evidence__column engineering-evidence__column--exposure" aria-label={copy.exposure}>
+        <div class="engineering-evidence__map-frame" role="group" aria-label={copy.mapLabel}>
+          {events.map((event, eventIndex) => (
+            <div class="engineering-evidence__map-panel" data-evidence-map-panel={event.id} hidden={eventIndex !== 0}>
+              <div class="engineering-evidence__map-stage">
+                <span class="engineering-evidence__taiwan engineering-evidence__taiwan--side" aria-hidden="true"></span>
+                <span class="engineering-evidence__taiwan engineering-evidence__taiwan--top" aria-hidden="true"></span>
+
+                <svg class="engineering-evidence__distance-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                  {event.sites.map((site) => (
+                    <line
+                      x1={event.epicenter.mapX}
+                      y1={event.epicenter.mapY}
+                      x2={site.mapX}
+                      y2={site.mapY}
+                      data-evidence-map-line={site.id}
+                      data-evidence-owner={event.id}
+                      hidden={site.id !== event.defaultSiteId}
+                    />
+                  ))}
+                </svg>
+
+                <span
+                  class="engineering-evidence__map-node engineering-evidence__map-node--epicenter"
+                  style={`--x:${event.epicenter.mapX}%;--y:${event.epicenter.mapY}%`}
+                  aria-label={copy.epicenterLabel}
+                >
+                  <span aria-hidden="true"></span>
+                </span>
+
+                {event.sites.map((site) => {
+                  const midpointX = (event.epicenter.mapX + site.mapX) / 2;
+                  const midpointY = (event.epicenter.mapY + site.mapY) / 2;
+                  return (
+                    <>
+                      <button
+                        type="button"
+                        class:list={['engineering-evidence__map-node', 'engineering-evidence__map-node--site', { 'is-active': site.id === event.defaultSiteId }]}
+                        style={`--x:${site.mapX}%;--y:${site.mapY}%`}
+                        data-evidence-map-site={site.id}
+                        data-evidence-owner={event.id}
+                        aria-pressed={site.id === event.defaultSiteId ? 'true' : 'false'}
+                        aria-label={`${copy.siteLabel}：${site.city[locale]} · ${site.facility[locale]}`}
+                      >
+                        <span aria-hidden="true"></span>
+                      </button>
+                      <span
+                        class="engineering-evidence__distance-label en-text"
+                        style={`--x:${midpointX}%;--y:${midpointY}%`}
+                        data-evidence-map-distance={site.id}
+                        data-evidence-owner={event.id}
+                        hidden={site.id !== event.defaultSiteId}
+                      >
+                        {site.distanceKm} km
+                      </span>
+                    </>
+                  );
+                })}
+              </div>
+
+              <div class="engineering-evidence__map-key" aria-hidden="true">
+                <span><i class="engineering-evidence__key-site"></i>{copy.siteLabel}</span>
+                <span><i class="engineering-evidence__key-epicenter"></i>{copy.epicenterLabel}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </section>
+
+      <section class="engineering-evidence__column engineering-evidence__column--site-card" aria-live="polite">
+        {events.map((event, eventIndex) => (
+          <div class="engineering-evidence__site-card" data-evidence-event-panel={event.id} hidden={eventIndex !== 0}>
+            {event.sites.length > 1 && (
+              <div class="engineering-evidence__site-tabs" role="group" aria-label={copy.selectSite}>
+                {event.sites.map((site, siteIndex) => (
+                  <button type="button" class:list={['engineering-evidence__site-tab', { 'is-active': site.id === event.defaultSiteId }]} data-evidence-site={site.id} data-evidence-owner={event.id} aria-pressed={site.id === event.defaultSiteId ? 'true' : 'false'}>
+                    <span class="en-text">{String(siteIndex + 1).padStart(2, '0')}</span>{site.city[locale]}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {event.sites.map((site) => (
+              <article class="engineering-evidence__exposure-detail" data-evidence-site-panel={site.id} data-evidence-owner={event.id} hidden={site.id !== event.defaultSiteId}>
+                <p class="engineering-evidence__site-name">{site.city[locale]} · {site.facility[locale]}</p>
+                <dl>
+                  <div><dt>{copy.distance}</dt><dd class="en-text">{site.distanceKm} km</dd></div>
+                  <div><dt>{copy.intensity}</dt><dd class="en-text">{site.siteIntensity}</dd></div>
+                  <div><dt>{copy.protection}</dt><dd>{site.product[locale]}</dd></div>
+                </dl>
+              </article>
+            ))}
+          </div>
+        ))}
+      </section>
+    </div>
+  </div>
+
+</section>
+
+<script src="../scripts/engineering-evidence.ts"></script>

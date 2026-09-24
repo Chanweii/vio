@@ -1,0 +1,113 @@
+/* =========================================
+   DESIGN TOKENS — Single Source of Truth
+   ========================================= */
+:root {
+    /* ─── Spacing (4px Grid System) ─── */
+    --sp-4: 4px;
+    --sp-8: 8px;
+    --sp-12: 12px;
+    --sp-16: 16px;
+    --sp-24: 24px;
+    --sp-32: 32px;
+    --sp-40: 40px;
+    --sp-48: 48px;
+    --sp-64: 64px;
+    --sp-80: 80px;
+    --sp-96: 96px;
+    --sp-128: 128px;
+
+    /* ─── Typography Scale ─── */
+    --text-xs: 16px;
+    --text-sm: 16px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 20px;
+    --text-2xl: 24px;
+    --text-3xl: 32px;
+    --text-4xl: 40px;
+    --text-5xl: 56px;
+    --text-6xl: 64px;
+
+    /* ─── Font Family ─── */
+    --font-en: 'Rubik', 'Inter', sans-serif;
+    --font-tc: 'Noto Sans TC', sans-serif;
+
+    /* ─── Brand Colors ─── */
+    --color-red: #CE3028;
+    --color-red-hover: #a81c1c;
+    --color-red-light: #F6BDBB;
+
+    /* ─── Functional Colors ─── */
+    --color-blue: #0052cc;
+    --color-blue-hover: #003d99;
+    --color-blue-light: rgba(0, 82, 204, 0.05);
+    --color-green: #00875a;
+    --color-green-light: rgba(0, 135, 90, 0.1);
+
+    /* ─── Surface & Text (Light Mode) ─── */
+    --bg-color: #eff0f0;
+    --bg-surface: #FFFFFF;
+    --bg-muted: #f5f7fa;
+    --text-color: #333333;
+    --title-color: #1A1A1A;
+
+    /* ─── Border & Lines ─── */
+    --border-color: rgba(17, 17, 17, 0.1);
+    --blueprint-line: rgba(0, 0, 0, 0.08);
+
+    /* ─── Header ─── */
+    --header-text-hover: #CE3028;
+    --header-bg-solid: #FFFFFF;
+    --header-border: rgba(0, 0, 0, 0.05);
+
+    /* ─── Editorial Wireframe ─── */
+    --wire-stroke: #111111;
+    --wire-shadow: #111111;
+    --wire-bg: #FFFFFF;
+    --wire-accent: #2F58F8;
+
+    /* ─── Radius ─── */
+    --radius-none: 0;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-pill: 9999px;
+
+    /* ─── Transitions ─── */
+    --ease-fast: 0.2s ease;
+    --ease-default: 0.3s ease;
+    --ease-slow: 0.4s ease-out;
+    --ease-spring: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ─── Aliases (backward compat) ─── */
+    --primary-red: var(--color-red);
+    --grid-border: var(--border-color);
+    --btn-bg: var(--color-red);
+    --btn-text: #FFFFFF;
+    --btn-hover-bg: var(--color-red-light);
+    --btn-hover-text: var(--color-red);
+}
+
+/* ─── Dark Theme ─── */
+[data-theme="dark"] {
+    --bg-color: #18191B;
+    --bg-surface: #1E1F21;
+    --bg-muted: rgba(255, 255, 255, 0.05);
+    --text-color: #EFF0F1;
+    --title-color: #EFF0F1;
+
+    --border-color: #2F3032;
+    --blueprint-line: rgba(255, 255, 255, 0.06);
+
+    --header-text-hover: #CE3028;
+    --header-bg-solid: #18191B;
+    --header-border: rgba(255, 255, 255, 0.05);
+
+    --wire-stroke: #EEEEEE;
+    --wire-shadow: #EEEEEE;
+    --wire-bg: #121212;
+    --wire-accent: #3A64F8;
+
+    /* Keep aliases consistent */
+    --grid-border: var(--border-color);
+}

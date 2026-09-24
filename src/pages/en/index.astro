@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import Footer from '../../components/Footer.astro';
+import ArrowButton from '../../components/ArrowButton.astro';
+import EngineeringRecords from '../../components/EngineeringRecords.astro';
+import ClientsMarquee from '../../components/ClientsMarquee.astro';
+import '../../styles/home.css';
+---
+
+<BaseLayout title="VIO - Engineering Consulting" lang="en" headerLang="en">
+  <main>
+    <!-- Hero Section (Seismic Control Animation) -->
+    <section class="hero" data-language-section="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Lower Seismic Response<br />Protect Critical Equipment</h1>
+          <p>Engineering Stability for Critical Operations</p>
+        </div>
+
+        <div class="hero-video-wrapper">
+          <video id="hero-video" autoplay muted loop playsinline>
+            <source src="/picture/index/hero_boomerang.webm" type="video/webm" />
+            <source src="/picture/index/hero_boomerang.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+        <span class="en-text">SCROLL DOWN</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-left">
+          <h2 class="en-text about-title">ABOUT VIO</h2>
+        </div>
+        <div class="about-right">
+          <p class="en-text about-desc">
+            Since its establishment in 2004, VIO has been dedicated to equipment isolation and vibration control technologies, serving semiconductor precision equipment, data centers, cultural heritage preservation, and other critical facilities.
+          </p>
+          <p class="en-text about-desc">
+            Our services go beyond passive equipment support, extending to active vibration and micro-vibration control. From precision equipment in high-tech fabs to the protection needs of general buildings, the VIO engineering team provides comprehensive solutions from assessment and design to implementation.
+          </p>
+          <ArrowButton text="Learn More" href="#" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Section -->
+    <section class="engineering-section">
+      <div class="eng-container">
+        <div class="eng-header">
+          <p class="eng-eyebrow en-text">OUR SERVICES</p>
+          <h2 class="eng-title en-text">From Requirement Assessment to Protection Implementation</h2>
+          <p class="eng-desc en-text">
+            Addressing the protection needs of precision equipment and critical facilities, we provide isolation, vibration control, and engineering integration services. Through system design, performance validation, and on-site implementation, we respond to diverse equipment and environmental protection requirements.
+          </p>
+        </div>
+
+        <div class="process-timeline">
+          <div class="process-step">
+            <img src="/picture/index/ENGINEERING_DEFINE.svg" class="step-icon-img" alt="Requirements & Environment Assessment" />
+            <h4 class="step-title en-text">Requirements &amp; Environment Assessment</h4>
+            <p class="step-desc en-text">Comprehensively evaluate equipment specifications, installation environment, and site constraints to establish the most precise engineering protection foundation.</p>
+          </div>
+
+          <div class="process-step">
+            <img src="/picture/index/ENGINEERING_DESIGN.svg" class="step-icon-img" alt="Design & Performance Validation" />
+            <h4 class="step-title en-text">Design &amp; Performance Validation</h4>
+            <p class="step-desc en-text">Plan structural and isolation configurations based on protection standards, and confirm seismic protection performance through rigorous testing.</p>
+          </div>
+
+          <div class="process-step">
+            <img src="/picture/index/ENGINEERING_DELIVER.svg" class="step-icon-img" alt="Manufacturing & On-site Integration" />
+            <h4 class="step-title en-text">Manufacturing &amp; On-site Integration</h4>
+            <p class="step-desc en-text">Strictly control manufacturing and assembly quality to ensure engineering specifications are precisely implemented in on-site installations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
+      <div class="eng-container">
+        <div class="solutions-grid">
+          <div class="solutions-nav-col">
+            <p class="solutions-eyebrow en-text">SOLUTIONS</p>
+            <h2 class="solutions-title en-text">Protective Applications</h2>
+            <ul class="solutions-tabs en-text" id="solutions-tabs">
+              <li class="tab-item active" data-index="0">
+                Equipment &amp; Instrument Isolation
+                <div class="active-indicator"></div>
+              </li>
+              <li class="tab-item" data-index="1">
+                Cabinet &amp; Display Case Isolation
+                <div class="active-indicator"></div>
+              </li>
+              <li class="tab-item" data-index="2">
+                Raised Floor &amp; Zone Isolation<div class="active-indicator"></div>
+              </li>
+              <li class="tab-item" data-index="3">
+                Structural Isolation &amp; Damping<div class="active-indicator"></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="solutions-img-col">
+            <div class="img-wrapper">
+              <img
+                src="https://via.placeholder.com/800x600/e0e0e0/666666?text=Device+Isolation"
+                id="solutions-img"
+                alt="Protection Solution Image"
+              />
+            </div>
+            <div class="slider-counter en-text">
+              <span id="current-slide" class="current-num">01</span> <span class="total-num">/ 04</span>
+            </div>
+          </div>
+
+          <div class="solutions-content-col">
+            <div class="content-card">
+              <h3 class="card-title en-text" id="solutions-card-title">Equipment &amp; Instrument Isolation</h3>
+              <div id="solutions-card-desc">
+                <p class="card-desc en-text">
+                  For semiconductor precision equipment, analytical instruments, and critical control systems, we plan isolation or vibration control configurations based on equipment weight, center of gravity, and installation conditions. By reducing seismic input and equipment response, we minimize impacts on operational stability and precision.
+                </p>
+                <div class="card-section footer-section">
+                  <h5 class="section-title en-text">Corresponding Core Components</h5>
+                  <p class="section-desc en-text" style="font-weight: 500; color: var(--primary-red);">
+                    MRB Standard/Heavy-duty Isolation Platforms, VIOBase 2.0 Patented Platform, TMD Tuned Mass Damper.
+                  </p>
+                </div>
+              </div>
+
+              <ArrowButton text="Learn More" href="#" />
+            </div>
+            <div class="slider-controls">
+              <button class="nav-btn prev-btn" id="solutions-prev" aria-label="Previous">
+                <span class="material-symbols-outlined">arrow_back</span>
+              </button>
+              <button class="nav-btn next-btn" id="solutions-next" aria-label="Next">
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Achievements Section -->
+    <section class="achievements-section" data-language-section="achievements">
+      <div class="eng-container">
+        <div class="eng-header">
+          <h2 class="eng-title en-text">Engineering Achievements</h2>
+          <p class="eng-desc en-text">
+            From independent R&amp;D and industry applications to testing and verification, VIO continues to
+            accumulate engineering experience and performance validation in seismic isolation and vibration
+            control.
+          </p>
+        </div>
+
+        <div class="achievements-grid">
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span class="counter" data-target="20">0</span><span class="unit">+ YEARS</span></h3>
+            <p class="achieve-desc en-text">Experience in isolation and vibration control engineering</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value en-text"><span class="counter" data-target="3000">0</span><span class="unit">+</span></h3>
+            <p class="achieve-desc en-text">Industrial applications of isolation devices</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span class="counter" data-target="4">0</span><span class="unit">+ PATENTS</span></h3>
+            <p class="achieve-desc en-text">Domestic and international invention patents</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span class="counter" data-target="3000">0</span><span class="unit"> CYCLES</span></h3>
+            <p class="achieve-desc en-text">Fatigue durability testing</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span class="counter" data-target="90">0</span><span class="unit">%</span></h3>
+            <p class="achieve-desc en-text">Representative seismic impact reduction</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><img src="/picture/index/logo_NCREE.webp" alt="NCREE x VIO" class="achieve-logo" /></h3>
+            <p class="achieve-desc en-text">Co-developed with the National Center for Research on Earthquake Engineering</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" data-language-section="products">
+      <div class="eng-container">
+        <div class="products-header">
+          <div class="products-heading-group">
+            <p class="eng-eyebrow en-text">OUR PRODUCT</p>
+            <h2 class="eng-title en-text">Product Series</h2>
+            <p class="products-intro en-text">Select the right protection component for equipment, structures, and vibration-control requirements.</p>
+          </div>
+          <nav class="product-filters" aria-label="Product category index">
+            <button type="button" class="product-filter is-active" data-product-filter="equipment" aria-pressed="true">Equipment Isolation</button>
+            <button type="button" class="product-filter" data-product-filter="structural" aria-pressed="false">Structural Isolation</button>
+            <button type="button" class="product-filter" data-product-filter="damping" aria-pressed="false">Damping</button>
+          </nav>
+        </div>
+
+        <div class="products-stage">
+          <div class="products-carousel" id="products-carousel">
+            <article class="product-series-card" data-product-category="equipment">
+              <span class="product-index en-text">01</span>
+              <div class="product-visual"><div class="product-color-block product-color--mrb-compact" role="img" aria-label="MRB Compact product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">MRB Compact</p>
+                <h3 class="product-name en-text">Precision Equipment Isolation Platform</h3>
+                <p class="product-summary en-text">A low-profile, lightweight rolling isolation platform for precision instruments, display cases, and space-constrained installations.</p>
+                <ul class="product-tags" aria-label="MRB Compact models"><li>35WD</li><li>40WD</li><li>45WD</li></ul>
+              </div>
+            </article>
+
+            <article class="product-series-card" data-product-category="equipment">
+              <span class="product-index en-text">02</span>
+              <div class="product-visual"><div class="product-color-block product-color--mrb-standard" role="img" aria-label="MRB Standard product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">MRB Standard</p>
+                <h3 class="product-name en-text">Equipment &amp; Cabinet Isolation Platform</h3>
+                <p class="product-summary en-text">Balanced load capacity and configuration flexibility for equipment, cabinets, collections, and varied site conditions.</p>
+                <ul class="product-tags" aria-label="MRB Standard models"><li>30SD</li><li>60WD</li></ul>
+              </div>
+            </article>
+
+            <article class="product-series-card" data-product-category="equipment">
+              <span class="product-index en-text">03</span>
+              <div class="product-visual"><div class="product-color-block product-color--viobase-1" role="img" aria-label="VIOBase 1.0 product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">VIOBase 1.0</p>
+                <h3 class="product-name en-text">Modular Equipment Isolation Platform</h3>
+                <p class="product-summary en-text">A modular rolling and damping platform designed to reduce seismic acceleration transmitted to critical equipment.</p>
+                <ul class="product-tags" aria-label="VIOBase 1.0 features"><li>Modular</li><li>Equipment Protection</li></ul>
+              </div>
+            </article>
+
+            <article class="product-series-card" data-product-category="equipment">
+              <span class="product-index en-text">04</span>
+              <div class="product-visual"><div class="product-color-block product-color--viobase-2" role="img" aria-label="VIOBase 2.0 product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">VIOBase 2.0</p>
+                <h3 class="product-name en-text">High-performance Equipment Isolation Platform</h3>
+                <p class="product-summary en-text">Enhanced isolation and displacement control for comprehensive protection of high-value precision equipment.</p>
+                <ul class="product-tags" aria-label="VIOBase 2.0 features"><li>High Performance</li><li>Displacement Control</li></ul>
+              </div>
+            </article>
+
+            <article class="product-series-card" data-product-category="structural">
+              <span class="product-index en-text">01</span>
+              <div class="product-visual"><div class="product-color-block product-color--mrb-heavy" role="img" aria-label="MRB Heavy-duty product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">MRB Heavy-duty</p>
+                <h3 class="product-name en-text">High-load Structural Isolation Bearing</h3>
+                <p class="product-summary en-text">Stable support, isolation displacement, and seismic-response control for high-load equipment and special structures.</p>
+                <ul class="product-tags" aria-label="MRB Heavy-duty models"><li>80B</li><li>120B</li><li>150B</li></ul>
+              </div>
+            </article>
+
+            <article class="product-series-card" data-product-category="damping">
+              <span class="product-index en-text">01</span>
+              <div class="product-visual"><div class="product-color-block product-color--mve" role="img" aria-label="MVE product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">MVE</p>
+                <h3 class="product-name en-text">Multilayer Viscoelastic Damper</h3>
+                <p class="product-summary en-text">Viscoelastic deformation absorbs and dissipates vibration energy in equipment and structural applications.</p>
+                <ul class="product-tags" aria-label="MVE features"><li>Vibration Control</li><li>Energy Dissipation</li></ul>
+              </div>
+            </article>
+
+            <article class="product-series-card" data-product-category="damping">
+              <span class="product-index en-text">02</span>
+              <div class="product-visual"><div class="product-color-block product-color--mab" role="img" aria-label="MAB product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">MAB</p>
+                <h3 class="product-name en-text">Composite Metallic Brace</h3>
+                <p class="product-summary en-text">Stable metallic deformation dissipates seismic energy for structural strengthening and response control.</p>
+                <ul class="product-tags" aria-label="MAB features"><li>Strengthening</li><li>Seismic Control</li></ul>
+              </div>
+            </article>
+
+            <article class="product-series-card" data-product-category="damping">
+              <span class="product-index en-text">03</span>
+              <div class="product-visual"><div class="product-color-block product-color--tmd" role="img" aria-label="TMD product color block"></div></div>
+              <div class="product-card-content">
+                <p class="product-code en-text">TMD</p>
+                <h3 class="product-name en-text">Tuned Mass Damper</h3>
+                <p class="product-summary en-text">A tuned mass absorbs vibration at target frequencies to reduce equipment, floor, and long-span structural response.</p>
+                <ul class="product-tags" aria-label="TMD features"><li>Frequency Tuning</li><li>Vibration Suppression</li></ul>
+              </div>
+            </article>
+
+            <aside class="product-consult-card">
+              <span class="consult-mark" aria-hidden="true"></span>
+              <div class="consult-copy">
+                <h3 class="en-text">Can’t find what you’re looking for?</h3>
+                <p class="en-text">Share your equipment conditions and site requirements. Our engineering team will help identify the right isolation or damping configuration.</p>
+              </div>
+              <a href="/contact/" class="consult-link en-text">Custom request</a>
+            </aside>
+          </div>
+
+          <div class="product-nav-controls" aria-label="Product series navigation">
+            <button class="product-nav-button product-nav-prev" id="product-prev" type="button" aria-label="Previous product series">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            </button>
+            <button class="product-nav-button product-nav-next" id="product-next" type="button" aria-label="Next product series">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <EngineeringRecords lang="en" />
+    <ClientsMarquee lang="en" />
+  </main>
+
+  <CtaSection />
+  <Footer />
+</BaseLayout>

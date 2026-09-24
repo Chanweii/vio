@@ -1,0 +1,333 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/contact.css';
+---
+
+<BaseLayout title="VIO - 唯創" lang="zh-Hant" headerLang="zh">
+  <Fragment slot="scripts">
+    <script src="/js/contact.js" is:inline></script>
+  </Fragment>
+
+  <main class="contact-main" style="min-height: 80vh; padding-top: 120px; padding-bottom: 80px;">
+    <div class="eng-container">
+      <!-- Contact Intro -->
+      <div class="contact-header">
+        <p class="eng-eyebrow en-text">CONTACT</p>
+        <h1 class="contact-title tc-text">Guided Engineering Inquiry｜引導式工程諮詢</h1>
+        <div class="contact-intro tc-text">
+          <p>工程需求不一定要完整才能開始討論。</p>
+          <p>提供目前已知的設備與場域資訊，<br />VIO 將依實際條件進一步確認適合的評估方向。</p>
+          <p class="time-estimate tc-text">預計填寫時間：約 2–4 分鐘 <span class="note">* 尚未確認的資料皆可略過</span></p>
+        </div>
+        <div class="general-contact-link">
+          <a href="mailto:viotech.inc@gmail.com" class="tc-text interactive-link">一般聯絡 →</a>
+        </div>
+      </div>
+
+      <!-- Progress Indicator -->
+      <div class="progress-container">
+        <div class="progress-track"></div>
+        <div class="progress-step active" data-step="1">
+          <div class="step-circle en-text">1</div>
+          <span class="step-label tc-text">基本資訊</span>
+        </div>
+        <div class="progress-step" data-step="2">
+          <div class="step-circle en-text">2</div>
+          <span class="step-label tc-text">專案需求</span>
+        </div>
+        <div class="progress-step" data-step="3">
+          <div class="step-circle en-text">3</div>
+          <span class="step-label tc-text">工程條件</span>
+        </div>
+      </div>
+
+      <!-- Form Area -->
+      <form id="inquiry-form" class="inquiry-form" onsubmit="return false;">
+        <!-- STEP 1: Basic Info -->
+        <div class="form-step step-1 active" data-step="1">
+          <div class="step-header">
+            <p class="step-subtitle en-text">STEP 01</p>
+            <h2 class="step-title tc-text">ABOUT YOU｜基本資訊</h2>
+            <p class="step-desc tc-text">讓我們知道如何與您聯繫。</p>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name" class="tc-text">姓名 *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="company" class="tc-text">公司／單位 *</label>
+              <input type="text" id="company" name="company" required class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="department" class="tc-text">部門／職稱</label>
+              <input type="text" id="department" name="department" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="email" class="tc-text">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            <div class="form-group">
+              <label for="phone" class="tc-text">電話</label>
+              <input type="tel" id="phone" name="phone" class="form-input" />
+            </div>
+          </div>
+
+          <div class="form-actions right">
+            <button type="button" class="btn-split next-btn">
+              <span class="btn-text">下一步</span>
+              <span class="btn-icon material-symbols-outlined">arrow_outward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Project Overview -->
+        <div class="form-step step-2" data-step="2" style="display: none;">
+          <div class="step-header">
+            <p class="step-subtitle en-text">STEP 02</p>
+            <h2 class="step-title tc-text">PROJECT OVERVIEW｜專案需求</h2>
+            <p class="step-desc tc-text">先從目前的設備與專案情境開始。<br />不需要知道 VIO 的產品型號。</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-question tc-text">01｜您的需求較接近哪一類？</label>
+            <div class="options-grid">
+              <label class="custom-radio tc-text"><input type="radio" name="need_type" value="設備隔震" /><span>設備隔震</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="need_type" value="振動控制" /><span>振動控制</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="need_type" value="既有設備改善" /><span>既有設備改善</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="need_type" value="新設備／新廠規劃" /><span>新設備／新廠規劃</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="need_type" value="已有耐震規格，需要進一步評估" /><span>已有耐震規格，需要進一步評估</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="need_type" value="尚不確定，希望協助判斷" /><span>尚不確定，希望協助判斷</span></label>
+            </div>
+          </div>
+
+          <div class="form-group mt-32">
+            <label class="form-question tc-text">02｜主要應用／設備類型</label>
+            <div class="options-grid">
+              <label class="custom-radio tc-text"><input type="radio" name="device_type" value="半導體設備" /><span>半導體設備</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="device_type" value="IT／Data Center" /><span>IT／Data Center</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="device_type" value="精密／關鍵設備" /><span>精密／關鍵設備</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="device_type" value="高架地板系統" /><span>高架地板系統</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="device_type" value="文物／典藏設備" /><span>文物／典藏設備</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="device_type" value="建築／特殊結構" /><span>建築／特殊結構</span></label>
+              <label class="custom-radio tc-text"><input type="radio" name="device_type" value="其他" /><span>其他</span></label>
+            </div>
+          </div>
+
+          <div class="form-group mt-32">
+            <label class="form-question tc-text">03｜目前專案階段</label>
+            <div class="options-list">
+              <label class="custom-radio-list tc-text"><input type="radio" name="project_stage" value="初步了解／可行性評估" /><span>初步了解／可行性評估</span></label>
+              <label class="custom-radio-list tc-text"><input type="radio" name="project_stage" value="規劃／設計階段" /><span>規劃／設計階段</span></label>
+              <label class="custom-radio-list tc-text"><input type="radio" name="project_stage" value="已有設備規格" /><span>已有設備規格</span></label>
+              <label class="custom-radio-list tc-text"><input type="radio" name="project_stage" value="既有設備改善" /><span>既有設備改善</span></label>
+              <label class="custom-radio-list tc-text"><input type="radio" name="project_stage" value="已進入採購／工程階段" /><span>已進入採購／工程階段</span></label>
+            </div>
+          </div>
+
+          <div class="form-group mt-32">
+            <label class="form-question tc-text">04｜目前最希望解決的問題 <span class="note">可複選</span></label>
+            <div class="options-grid">
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="降低設備加速度反應" /><span>降低設備加速度反應</span></label>
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="控制隔震位移" /><span>控制隔震位移</span></label>
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="設備耐震／地震防護" /><span>設備耐震／地震防護</span></label>
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="安裝空間有限" /><span>安裝空間有限</span></label>
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="高架地板／基礎整合" /><span>高架地板／基礎整合</span></label>
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="既有管線或周邊設備限制" /><span>既有管線或周邊設備限制</span></label>
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="振動問題" /><span>振動問題</span></label>
+              <label class="custom-checkbox tc-text"><input type="checkbox" name="concerns" value="尚不確定" /><span>尚不確定</span></label>
+            </div>
+          </div>
+
+          <div class="form-actions space-between">
+            <button type="button" class="btn-outline btn-pill prev-btn"><span class="material-symbols-outlined">arrow_back</span> 上一步</button>
+            <button type="button" class="btn-split next-btn">
+              <span class="btn-text">下一步</span>
+              <span class="btn-icon material-symbols-outlined">arrow_outward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Engineering Conditions -->
+        <div class="form-step step-3" data-step="3" style="display: none;">
+          <div class="step-header">
+            <p class="step-subtitle en-text">STEP 03</p>
+            <h2 class="step-title tc-text">ENGINEERING CONDITIONS｜工程條件</h2>
+            <p class="step-desc tc-text">提供目前已知的資訊即可。<br />資料尚未完整，也可以先送出。</p>
+          </div>
+
+          <div class="readiness-section">
+            <h3 class="section-heading en-text">YOUR INFORMATION READINESS</h3>
+            <p class="section-subheading tc-text">需求準備檢核</p>
+            <p class="section-note tc-text">目前是否已有以下資料？</p>
+
+            <div class="readiness-list">
+              <div class="readiness-item">
+                <span class="readiness-label tc-text">設備尺寸</span>
+                <div class="toggle-group">
+                  <label><input type="radio" name="ready_dim" value="yes" /><span>✓ 已知</span></label>
+                  <label><input type="radio" name="ready_dim" value="no" checked /><span>尚未確認</span></label>
+                </div>
+              </div>
+              <div class="readiness-item">
+                <span class="readiness-label tc-text">設備重量</span>
+                <div class="toggle-group">
+                  <label><input type="radio" name="ready_weight" value="yes" /><span>✓ 已知</span></label>
+                  <label><input type="radio" name="ready_weight" value="no" checked /><span>尚未確認</span></label>
+                </div>
+              </div>
+              <div class="readiness-item">
+                <span class="readiness-label tc-text">設備重心位置</span>
+                <div class="toggle-group">
+                  <label><input type="radio" name="ready_cg" value="yes" /><span>✓ 已知</span></label>
+                  <label><input type="radio" name="ready_cg" value="no" checked /><span>尚未確認</span></label>
+                </div>
+              </div>
+              <div class="readiness-item">
+                <span class="readiness-label tc-text">安裝／可用位移空間</span>
+                <div class="toggle-group">
+                  <label><input type="radio" name="ready_space" value="yes" /><span>✓ 已知</span></label>
+                  <label><input type="radio" name="ready_space" value="no" checked /><span>尚未確認</span></label>
+                </div>
+              </div>
+              <div class="readiness-item">
+                <span class="readiness-label tc-text">樓板／高架地板條件</span>
+                <div class="toggle-group">
+                  <label><input type="radio" name="ready_floor" value="yes" /><span>✓ 已知</span></label>
+                  <label><input type="radio" name="ready_floor" value="no" checked /><span>尚未確認</span></label>
+                </div>
+              </div>
+              <div class="readiness-item">
+                <span class="readiness-label tc-text">既有管線／線路限制</span>
+                <div class="toggle-group">
+                  <label><input type="radio" name="ready_pipes" value="yes" /><span>✓ 已知</span></label>
+                  <label><input type="radio" name="ready_pipes" value="no" checked /><span>尚未確認</span></label>
+                </div>
+              </div>
+              <div class="readiness-item">
+                <span class="readiness-label tc-text">耐震規格／性能要求</span>
+                <div class="toggle-group">
+                  <label><input type="radio" name="ready_spec" value="yes" /><span>✓ 已知</span></label>
+                  <label><input type="radio" name="ready_spec" value="no" checked /><span>尚未確認</span></label>
+                </div>
+              </div>
+            </div>
+
+            <div class="dynamic-guidance">
+              <h4 class="tc-text">系統提示</h4>
+              <p class="tc-text">提供越多資訊，將有助於 VIO 更快進一步確認評估方向。<br /><span class="note">※ 資料不完整仍可提交。</span></p>
+            </div>
+          </div>
+
+          <div class="optional-section mt-48">
+            <h3 class="section-heading en-text">OPTIONAL DETAILS</h3>
+            <p class="section-subheading tc-text">補充資料</p>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="eq_weight" class="tc-text">設備重量 (kg)</label>
+                <input type="number" id="eq_weight" name="eq_weight" class="form-input" />
+              </div>
+              <div class="form-group">
+                <label class="tc-text">設備尺寸 (長 × 寬 × 高 mm)</label>
+                <div class="multi-input">
+                  <input type="number" placeholder="長" name="dim_l" class="form-input" />
+                  <span class="times">×</span>
+                  <input type="number" placeholder="寬" name="dim_w" class="form-input" />
+                  <span class="times">×</span>
+                  <input type="number" placeholder="高" name="dim_h" class="form-input" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="tc-text">安裝環境</label>
+                <div class="options-grid-small">
+                  <label class="custom-radio tc-text"><input type="radio" name="env" value="一般樓板" /><span>一般樓板</span></label>
+                  <label class="custom-radio tc-text"><input type="radio" name="env" value="高架地板" /><span>高架地板</span></label>
+                  <label class="custom-radio tc-text"><input type="radio" name="env" value="鋼構平台" /><span>鋼構平台</span></label>
+                  <label class="custom-radio tc-text"><input type="radio" name="env" value="其他" /><span>其他</span></label>
+                  <label class="custom-radio tc-text"><input type="radio" name="env" value="尚未確認" /><span>尚未確認</span></label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="perf_req" class="tc-text">已有性能／耐震需求</label>
+                <input type="text" id="perf_req" name="perf_req" placeholder="例：最大允許加速度、位移限制、設備商規範等" class="form-input" />
+              </div>
+            </div>
+          </div>
+
+          <div class="upload-section mt-48">
+            <h3 class="section-heading en-text">UPLOAD</h3>
+            <p class="section-subheading tc-text">檔案上傳</p>
+            <p class="tc-text note">若手上已有資料，可直接提供。不用特地為了填表準備新資料。</p>
+
+            <div class="file-upload-area">
+              <input type="file" id="file-upload" name="file_upload" multiple class="file-input" />
+              <label for="file-upload" class="file-label tc-text">
+                <span class="material-symbols-outlined icon">upload_file</span>
+                <span class="text">＋ 上傳設備規格／圖面／照片</span>
+                <span class="subtext">支援：PDF / JPG / PNG / CAD export</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="notes-section mt-48">
+            <h3 class="section-heading en-text">ADDITIONAL NOTES</h3>
+            <p class="section-subheading tc-text">補充說明</p>
+            <div class="form-group">
+              <label for="notes" class="tc-text">還有什麼希望我們先了解？</label>
+              <textarea id="notes" name="notes" rows="4" class="form-input"></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions space-between mt-48">
+            <button type="button" class="btn-outline btn-pill prev-btn"><span class="material-symbols-outlined">arrow_back</span> 上一步</button>
+            <button type="button" class="btn-split review-btn">
+              <span class="btn-text">查看需求摘要</span>
+              <span class="btn-icon material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Review Summary -->
+        <div class="form-step step-summary" data-step="4" style="display: none;">
+          <div class="step-header">
+            <p class="step-subtitle en-text">REVIEW</p>
+            <h2 class="step-title tc-text">REVIEW SUMMARY｜送出前摘要</h2>
+            <p class="step-desc tc-text">請確認您的諮詢內容。</p>
+          </div>
+
+          <div class="summary-content">
+            <div id="summary-data" class="tc-text"></div>
+          </div>
+
+          <div class="form-actions space-between mt-48">
+            <button type="button" class="btn-outline btn-pill prev-btn"><span class="material-symbols-outlined">arrow_back</span> 返回修改</button>
+            <button type="submit" class="btn-split submit-btn">
+              <span class="btn-text">提交工程需求</span>
+              <span class="btn-icon material-symbols-outlined">send</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Success State -->
+      <div id="success-state" class="success-state" style="display: none;">
+        <div class="success-icon">
+          <span class="material-symbols-outlined">check_circle</span>
+        </div>
+        <h2 class="success-title tc-text">需求已送出</h2>
+        <div class="success-desc tc-text">
+          <p>感謝提供目前的專案資訊。</p>
+          <p>VIO 將依您提供的設備、場域與需求內容，<br />確認後續適合的聯繫與評估方式。</p>
+        </div>
+        <button type="button" class="btn-outline btn-pill mt-32" onclick="location.reload()">返回首頁</button>
+      </div>
+    </div>
+  </main>
+
+  <CtaSection />
+  <Footer />
+</BaseLayout>

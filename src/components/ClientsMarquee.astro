@@ -1,0 +1,56 @@
+---
+export interface Props {
+  lang?: 'zh' | 'en';
+}
+
+const { lang = 'zh' } = Astro.props;
+const isEnglish = lang === 'en';
+
+const copy = isEnglish
+  ? {
+      eyebrow: 'OUR CLIENTS',
+      title: 'Together with our clients, we safeguard assets through engineering',
+      label: 'Selected clients',
+    }
+  : {
+      eyebrow: 'OUR CLIENTS',
+      title: '我們與客戶共同用工程技術護航資產',
+      label: '合作客戶',
+    };
+
+const clients = [
+  { src: '/picture/clients/umc.svg', alt: isEnglish ? 'UMC' : '聯華電子' },
+  { src: '/picture/clients/jasm.svg', alt: 'JASM' },
+  { src: '/picture/clients/chunghwa-telecom.svg', alt: isEnglish ? 'Chunghwa Telecom' : '中華電信' },
+  { src: '/picture/clients/academia-sinica.svg', alt: isEnglish ? 'Academia Sinica' : '中央研究院' },
+  { src: '/picture/clients/central-weather-bureau.svg', alt: isEnglish ? 'Central Weather Bureau' : '中央氣象局' },
+  { src: '/picture/clients/nari.png', alt: isEnglish ? 'National Atomic Research Institute' : '國家原子能科技研究院' },
+  { src: '/picture/clients/nchc.svg', alt: isEnglish ? 'National Center for High-performance Computing' : '國家高速網路與計算中心' },
+  { src: '/picture/clients/fire-services.svg', alt: isEnglish ? 'Fire Services' : '消防機關' },
+  { src: '/picture/clients/chunghwa-post.svg', alt: isEnglish ? 'Chunghwa Post' : '中華郵政' },
+  { src: '/picture/clients/tfaz.svg', alt: 'TFAZ' },
+];
+---
+
+<section id="clients" class="clients-section" data-language-section="clients" aria-labelledby={`clients-title-${lang}`}>
+  <div class="eng-container clients-header">
+    <p class="clients-eyebrow en-text">{copy.eyebrow}</p>
+    <h2 id={`clients-title-${lang}`} class:list={['clients-title', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>
+      {copy.title}
+    </h2>
+  </div>
+
+  <div class="clients-marquee" role="region" aria-label={copy.label}>
+    <div class="clients-marquee-track">
+      {[false, true].map((isDuplicate) => (
+        <div class="clients-marquee-group" role={isDuplicate ? undefined : 'list'} aria-hidden={isDuplicate ? 'true' : undefined}>
+          {clients.map((client) => (
+            <div class="client-logo-card" role={isDuplicate ? undefined : 'listitem'}>
+              <img src={client.src} alt={isDuplicate ? '' : client.alt} loading="lazy" decoding="async" />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

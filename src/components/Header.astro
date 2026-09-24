@@ -1,0 +1,88 @@
+---
+// 共用 Header / Nav — 抽取自原本 index.html / index-en.html / contact.html
+// 三個頁面重複貼上的區塊,現在只要維護這一個檔案。
+export interface Props {
+  lang?: 'zh' | 'en';
+}
+
+const { lang = 'zh' } = Astro.props;
+const solid = Astro.url.pathname.replace(/\/$/, '') === '/contact';
+const currentPath = Astro.url.pathname;
+
+// Keep language links on the equivalent route whenever that translation exists.
+// At present the bilingual home page is the shared route; untranslated pages
+// intentionally fall back to the destination language's home page.
+const englishHref = currentPath === '/' || currentPath === '/en/' ? '/en/' : '/en/';
+const chineseHref = currentPath === '/' || currentPath === '/en/' ? '/' : currentPath;
+
+const homeHref = lang === 'en' ? '/en/' : '/';
+const navItems =
+  lang === 'en'
+    ? [
+        { label: 'ABOUT US', href: '#' },
+        { label: 'SOLUTIONS', href: '#' },
+        { label: 'PRODUCTS', href: '#' },
+        { label: 'ENGINEERING', href: '#' },
+      ]
+    : [
+        { label: '關於唯創', href: '#' },
+        { label: '解決方案', href: '#' },
+        { label: '產品與技術', href: '#' },
+        { label: '工程能力', href: '#' },
+      ];
+// 原始 English 版按鈕連到 "#"(尚未連到聯絡頁),中文版連到 contact.html。
+// 這裡保留原本行為,之後聯絡頁做好英文版時再改成 "/contact/"。
+const contactHref = lang === 'en' ? '#' : '/contact/';
+const contactLabel = lang === 'en' ? 'Contact Us' : '聯絡我們';
+const menuAriaLabel = lang === 'en' ? 'Menu' : '選單';
+const themeAriaLabel = lang === 'en' ? 'Toggle Theme' : '切換深淺模式';
+---
+
+<header class:list={['header', { 'is-floating': solid }]} data-solid={solid ? 'true' : undefined}>
+  <div class="header-container">
+    <div class="header-left">
+      <div class="logo">
+        <a href={homeHref}>
+          <!-- 根據深淺色模式透過 CSS 切換 -->
+          <img src="/picture/index/logo_light.webp" class="logo-img logo-dark" alt="VIO" style="height: 40px;" />
+          <img src="/picture/index/logo_dark.webp" class="logo-img logo-light" alt="VIO" style="height: 40px;" />
+        </a>
+      </div>
+
+      <nav class="nav-links" id="primary-navigation">
+        {navItems.map((item) => (
+          <a href={item.href} class={lang === 'en' ? 'en-text' : ''}>{item.label}</a>
+        ))}
+
+        <!-- Mobile only elements for hamburger menu -->
+        <div class="mobile-only-extras">
+          <div class="lang-switch-mobile">
+            <a href={englishHref} data-language-switch class={`en-text ${lang === 'en' ? 'active' : ''}`}>English</a>
+            <span class="divider">|</span>
+            <a href={chineseHref} data-language-switch class={`tc-text ${lang === 'zh' ? 'active' : ''}`}>繁中</a>
+          </div>
+          <button type="button" class="theme-toggle theme-toggle-mobile" data-theme-toggle aria-label={themeAriaLabel}>
+            <span class="material-symbols-outlined" aria-hidden="true">contrast</span>
+            {lang === 'en' ? 'Toggle Theme' : '切換深淺模式'}
+          </button>
+          <a href={contactHref} class="btn-primary btn-pill">{contactLabel}</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="header-controls">
+      <div class="lang-switch">
+        <a href={englishHref} data-language-switch class={`en-text ${lang === 'en' ? 'active' : ''}`}>English</a>
+        <span class="divider">|</span>
+        <a href={chineseHref} data-language-switch class={`tc-text ${lang === 'zh' ? 'active' : ''}`}>繁中</a>
+      </div>
+      <button type="button" class="theme-toggle" id="themeToggleBtn" data-theme-toggle aria-label={themeAriaLabel}>
+        <span class="material-symbols-outlined">contrast</span>
+      </button>
+      <a href={contactHref} class="btn-primary btn-pill">{contactLabel}</a>
+      <button type="button" class="menu-toggle" id="mobileMenuBtn" aria-label={menuAriaLabel} aria-controls="primary-navigation" aria-expanded="false">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+</header>

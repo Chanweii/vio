@@ -1,0 +1,350 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Footer from '../components/Footer.astro';
+import ArrowButton from '../components/ArrowButton.astro';
+import EngineeringRecords from '../components/EngineeringRecords.astro';
+import ClientsMarquee from '../components/ClientsMarquee.astro';
+import '../styles/home.css';
+---
+
+<BaseLayout title="VIO - 唯創" lang="zh-Hant" headerLang="zh">
+  <main>
+    <!-- Hero Section (Seismic Control Animation) -->
+    <section class="hero" data-language-section="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>降低地震反應<br />守護關鍵設備</h1>
+          <p>以工程控制降低地震對關鍵設備與營運的影響</p>
+        </div>
+
+        <div class="hero-video-wrapper">
+          <video id="hero-video" autoplay muted loop playsinline>
+            <source src="/picture/index/hero_boomerang.webm" type="video/webm" />
+            <source src="/picture/index/hero_boomerang.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+        <span class="en-text">SCROLL DOWN</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-left">
+          <h2 class="en-text about-title">ABOUT VIO</h2>
+          <h3 class="tc-text about-subtitle">關於唯創</h3>
+        </div>
+        <div class="about-right">
+          <p class="tc-text about-desc">
+            自 2004 年成立以來，唯創持續投入設備隔震與振動控制技術，應用涵蓋半導體精密設備、數據中心、文物典藏與其他關鍵設施。
+          </p>
+          <p class="about-desc">
+            我們的服務不僅止於被動的設備支撐，更延伸至主動的振動與微震控制。從高科技廠房的精密設備，到一般建築的防護需求，唯創工程團隊為您提供從評估、設計到施工的完整解決方案。
+          </p>
+          <ArrowButton text="了解我們" href="#" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Section -->
+    <section class="engineering-section">
+      <div class="eng-container">
+        <div class="eng-header">
+          <p class="eng-eyebrow en-text">OUR SERVICES</p>
+          <h2 class="eng-title tc-text">從需求評估，到防護系統落地</h2>
+          <p class="eng-desc tc-text">
+            我們針對精密設備與關鍵場域的防護需求，提供隔震、振動控制與工程整合服務，並透過系統設計、性能驗證與現場實施，回應不同設備與環境的防護需求。
+          </p>
+        </div>
+
+        <div class="process-timeline">
+          <div class="process-step">
+            <img src="/picture/index/ENGINEERING_DEFINE.svg" class="step-icon-img" alt="需求與工程評估" />
+            <h4 class="step-title tc-text">需求與環境評估</h4>
+            <p class="step-desc tc-text">全面評估設備規格、安裝環境與場域限制，奠定最精準的工程防護基礎。</p>
+          </div>
+
+          <div class="process-step">
+            <img src="/picture/index/ENGINEERING_DESIGN.svg" class="step-icon-img" alt="設計與性能驗證" />
+            <h4 class="step-title tc-text">設計與性能驗證</h4>
+            <p class="step-desc tc-text">依防護標準規劃結構與隔震配置，並透過嚴謹測試確認耐震防護性能。</p>
+          </div>
+
+          <div class="process-step">
+            <img src="/picture/index/ENGINEERING_DELIVER.svg" class="step-icon-img" alt="製造與現場整合" />
+            <h4 class="step-title tc-text">製造與現場整合</h4>
+            <p class="step-desc tc-text">嚴格把關製造與組裝品質，確保工程規格精準落實於現場安裝。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
+      <div class="eng-container">
+        <div class="solutions-grid">
+          <div class="solutions-nav-col">
+            <p class="solutions-eyebrow en-text">SOLUTIONS</p>
+            <h2 class="solutions-title tc-text">防護應用</h2>
+            <ul class="solutions-tabs tc-text" id="solutions-tabs">
+              <li class="tab-item active" data-index="0">
+                設備與儀器隔震
+                <div class="active-indicator"></div>
+              </li>
+              <li class="tab-item" data-index="1">
+                機櫃與典藏櫃隔震
+                <div class="active-indicator"></div>
+              </li>
+              <li class="tab-item" data-index="2">
+                區域與高架地板隔震<div class="active-indicator"></div>
+              </li>
+              <li class="tab-item" data-index="3">
+                結構隔震與消能<div class="active-indicator"></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="solutions-img-col">
+            <div class="img-wrapper">
+              <img
+                src="https://via.placeholder.com/800x600/e0e0e0/666666?text=Device+Isolation"
+                id="solutions-img"
+                alt="防護方案圖片"
+              />
+            </div>
+            <div class="slider-counter en-text">
+              <span id="current-slide" class="current-num">01</span> <span class="total-num">/ 04</span>
+            </div>
+          </div>
+
+          <div class="solutions-content-col">
+            <div class="content-card">
+              <h3 class="card-title tc-text" id="solutions-card-title">設備與儀器隔震</h3>
+              <div id="solutions-card-desc">
+                <p class="card-desc tc-text">
+                  針對半導體精密設備、分析儀器與關鍵控制設備，依設備重量、重心與安裝條件規劃隔震或振動控制配置。透過降低地震輸入與設備反應，減少對運轉穩定性與精度的影響。
+                </p>
+                <div class="card-section footer-section">
+                  <h5 class="section-title tc-text">對應核心元件</h5>
+                  <p class="section-desc tc-text" style="font-weight: 500; color: var(--primary-red);">
+                    MRB 通用型/重型隔震平台、VIOBase 2.0 專利平台、TMD 調諧質量阻尼器。
+                  </p>
+                </div>
+              </div>
+
+              <ArrowButton text="了解更多" href="#" />
+            </div>
+            <div class="slider-controls">
+              <button class="nav-btn prev-btn" id="solutions-prev" aria-label="Previous">
+                <span class="material-symbols-outlined">arrow_back</span>
+              </button>
+              <button class="nav-btn next-btn" id="solutions-next" aria-label="Next">
+                <span class="material-symbols-outlined">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Achievements Section -->
+    <section class="achievements-section" data-language-section="achievements">
+      <div class="eng-container">
+        <div class="eng-header">
+          <p class="eng-eyebrow en-text">BY THE NUMBERS</p>
+          <h2 class="eng-title tc-text">經得起驗證的防護能力</h2>
+          <p class="eng-desc tc-text">從自主研發、產業應用到測試驗證，唯創持續累積隔震與振動控制的工程經驗與性能實證。</p>
+        </div>
+
+        <div class="achievements-grid">
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span><span class="counter" data-target="20">0</span>+</span><span class="unit tc-text">年</span></h3>
+            <p class="achieve-desc tc-text">隔震與振動控制工程經驗</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value tc-text"><span><span class="counter" data-target="1000">0</span>+</span><span class="unit tc-text">組</span></h3>
+            <p class="achieve-desc tc-text">隔震裝置產業應用</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span><span class="counter" data-target="4">0</span>+</span><span class="unit tc-text">項</span></h3>
+            <p class="achieve-desc tc-text">國內外發明專利</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span class="counter" data-target="3000">0</span><span class="unit tc-text">次</span></h3>
+            <p class="achieve-desc tc-text">疲勞耐久性測試</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><span class="counter" data-target="90">0</span><span class="unit">%</span></h3>
+            <p class="achieve-desc tc-text">地震衝擊加速度 (gal) 折減</p>
+          </div>
+          <div class="achievement-card">
+            <h3 class="achieve-value"><img src="/picture/index/logo_NCREE.webp" alt="NCREE x VIO" class="achieve-logo" /></h3>
+            <p class="achieve-desc tc-text">與國家地震工程研究中心共同研發</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" data-language-section="products">
+      <div class="eng-container">
+        <div class="products-header">
+          <div class="products-heading-group">
+            <p class="eng-eyebrow en-text">OUR PRODUCT</p>
+            <h2 class="eng-title tc-text">產品系列</h2>
+            <p class="products-intro tc-text">從設備隔震到結構消能，依承載、位移與場域條件選擇合適的防護元件。</p>
+          </div>
+          <nav class="product-filters" aria-label="產品分類索引">
+            <button type="button" class="product-filter is-active" data-product-filter="equipment" aria-pressed="true">設備隔震</button>
+            <button type="button" class="product-filter" data-product-filter="structural" aria-pressed="false">結構隔震</button>
+            <button type="button" class="product-filter" data-product-filter="damping" aria-pressed="false">阻尼與消能</button>
+          </nav>
+        </div>
+
+        <div class="products-stage">
+          <div class="products-carousel" id="products-carousel">
+          <article class="product-series-card" data-product-category="equipment">
+            <span class="product-index en-text">01</span>
+            <div class="product-visual">
+              <div class="product-color-block product-color--mrb-compact" role="img" aria-label="MRB 精巧型產品視覺色塊"></div>
+            </div>
+            <div class="product-card-content">
+              <p class="product-code en-text">MRB 精巧型</p>
+              <h3 class="product-name tc-text">精密設備隔震平台</h3>
+              <p class="product-summary tc-text">低高度、輕量化的多軸滾動隔震平台，適合精密儀器、展示櫃與空間受限的安裝環境。</p>
+              <ul class="product-tags" aria-label="MRB 精巧型號">
+                <li>35WD</li>
+                <li>40WD</li>
+                <li>45WD</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-series-card" data-product-category="equipment">
+            <span class="product-index en-text">02</span>
+            <div class="product-visual">
+              <div class="product-color-block product-color--mrb-standard" role="img" aria-label="MRB 通用型產品視覺色塊"></div>
+            </div>
+            <div class="product-card-content">
+              <p class="product-code en-text">MRB 通用型</p>
+              <h3 class="product-name tc-text">設備與機櫃隔震平台</h3>
+              <p class="product-summary tc-text">兼顧承載能力與配置彈性，適用於設備、機櫃、典藏櫃及多種工程安裝條件。</p>
+              <ul class="product-tags" aria-label="MRB 通用型號">
+                <li>30SD</li>
+                <li>60WD</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-series-card" data-product-category="equipment">
+            <span class="product-index en-text">03</span>
+            <div class="product-visual">
+              <div class="product-color-block product-color--viobase-1" role="img" aria-label="VIOBase 1.0 產品視覺色塊"></div>
+            </div>
+            <div class="product-card-content">
+              <p class="product-code en-text">VIOBase 1.0</p>
+              <h3 class="product-name tc-text">模組化設備隔震平台</h3>
+              <p class="product-summary tc-text">整合滾動與阻尼機制，提供模組化隔震配置，降低設備承受的地震加速度反應。</p>
+              <ul class="product-tags" aria-label="VIOBase 1.0 產品特性">
+                <li>模組化</li>
+                <li>設備防護</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-series-card" data-product-category="equipment">
+            <span class="product-index en-text">04</span>
+            <div class="product-visual">
+              <div class="product-color-block product-color--viobase-2" role="img" aria-label="VIOBase 2.0 產品視覺色塊"></div>
+            </div>
+            <div class="product-card-content">
+              <p class="product-code en-text">VIOBase 2.0</p>
+              <h3 class="product-name tc-text">高性能設備隔震平台</h3>
+              <p class="product-summary tc-text">強化隔震與位移控制性能，針對高價值精密設備提供更完整的地震防護。</p>
+              <ul class="product-tags" aria-label="VIOBase 2.0 產品特性">
+                <li>高性能</li>
+                <li>位移控制</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="product-series-card" data-product-category="structural">
+            <span class="product-index en-text">01</span>
+            <div class="product-visual"><div class="product-color-block product-color--mrb-heavy" role="img" aria-label="MRB 重型產品視覺色塊"></div></div>
+            <div class="product-card-content">
+              <p class="product-code en-text">MRB 重型</p>
+              <h3 class="product-name tc-text">高承載結構隔震支承</h3>
+              <p class="product-summary tc-text">面向高承載設備與特殊結構需求，提供穩定支承、隔震位移與地震反應控制能力。</p>
+              <ul class="product-tags" aria-label="MRB 重型號"><li>80B</li><li>120B</li><li>150B</li></ul>
+            </div>
+          </article>
+
+          <article class="product-series-card" data-product-category="damping">
+            <span class="product-index en-text">01</span>
+            <div class="product-visual"><div class="product-color-block product-color--mve" role="img" aria-label="MVE 產品視覺色塊"></div></div>
+            <div class="product-card-content">
+              <p class="product-code en-text">MVE</p>
+              <h3 class="product-name tc-text">多層黏彈性阻尼器</h3>
+              <p class="product-summary tc-text">利用黏彈性材料的變形與耗能特性，吸收並消散設備與結構的振動能量。</p>
+              <ul class="product-tags" aria-label="MVE 產品特性"><li>振動控制</li><li>能量消散</li></ul>
+            </div>
+          </article>
+
+          <article class="product-series-card" data-product-category="damping">
+            <span class="product-index en-text">02</span>
+            <div class="product-visual"><div class="product-color-block product-color--mab" role="img" aria-label="MAB 產品視覺色塊"></div></div>
+            <div class="product-card-content">
+              <p class="product-code en-text">MAB</p>
+              <h3 class="product-name tc-text">複合式金屬斜撐</h3>
+              <p class="product-summary tc-text">透過金屬元件穩定變形進行耗能，適用於結構補強與地震反應控制。</p>
+              <ul class="product-tags" aria-label="MAB 產品特性"><li>結構補強</li><li>耐震控制</li></ul>
+            </div>
+          </article>
+
+          <article class="product-series-card" data-product-category="damping">
+            <span class="product-index en-text">03</span>
+            <div class="product-visual"><div class="product-color-block product-color--tmd" role="img" aria-label="TMD 產品視覺色塊"></div></div>
+            <div class="product-card-content">
+              <p class="product-code en-text">TMD</p>
+              <h3 class="product-name tc-text">調諧質量阻尼器</h3>
+              <p class="product-summary tc-text">透過調諧質量吸收特定頻率的振動能量，降低設備、樓板與大跨度結構的振動反應。</p>
+              <ul class="product-tags" aria-label="TMD 產品特性"><li>頻率調諧</li><li>振動抑制</li></ul>
+            </div>
+          </article>
+
+          <aside class="product-consult-card">
+            <span class="consult-mark" aria-hidden="true"></span>
+            <div class="consult-copy">
+              <h3 class="tc-text">找不到合適的產品？</h3>
+              <p class="tc-text">提供設備條件與場域需求，我們的工程團隊會協助您找到合適的隔震或消能配置。</p>
+            </div>
+            <a href="/contact/" class="consult-link tc-text">提出工程需求</a>
+          </aside>
+          </div>
+
+          <div class="product-nav-controls" aria-label="產品系列瀏覽控制">
+            <button class="product-nav-button product-nav-prev" id="product-prev" type="button" aria-label="上一個產品系列">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+            </button>
+            <button class="product-nav-button product-nav-next" id="product-next" type="button" aria-label="下一個產品系列">
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <EngineeringRecords lang="zh" />
+    <ClientsMarquee lang="zh" />
+  </main>
+
+  <CtaSection />
+  <Footer />
+</BaseLayout>

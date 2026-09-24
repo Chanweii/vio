@@ -1,0 +1,67 @@
+/* Keep the original site's reset; Tailwind Preflight changes its typography,
+   image display and form controls. Utilities remain available. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* ─────────────────────────────────────────────
+   既有 Design Token 架構(維持不變,供現有 CSS 使用)
+   ───────────────────────────────────────────── */
+@import "./tokens.css";
+@import "./base.css";
+@import "./components.css";
+@import "./layout.css";
+
+/* ─────────────────────────────────────────────
+   把 tokens.css 的 CSS 變數映射進 Tailwind 主題
+   讓之後可以直接用 utility class,例如:
+   text-brand, bg-surface, p-sp-32, text-size-xl
+   (existing CSS 完全不受影響,這只是"新增"可用的 class)
+   ───────────────────────────────────────────── */
+@theme inline {
+  /* Colors */
+  --color-brand: var(--color-red);
+  --color-brand-hover: var(--color-red-hover);
+  --color-brand-light: var(--color-red-light);
+  --color-info: var(--color-blue);
+  --color-info-hover: var(--color-blue-hover);
+  --color-success: var(--color-green);
+  --color-surface: var(--bg-surface);
+  --color-bg: var(--bg-color);
+  --color-muted: var(--bg-muted);
+  --color-body: var(--text-color);
+  --color-title: var(--title-color);
+  --color-border: var(--border-color);
+
+  /* Spacing (4px grid, matches --sp-*) */
+  --spacing-sp-4: var(--sp-4);
+  --spacing-sp-8: var(--sp-8);
+  --spacing-sp-12: var(--sp-12);
+  --spacing-sp-16: var(--sp-16);
+  --spacing-sp-24: var(--sp-24);
+  --spacing-sp-32: var(--sp-32);
+  --spacing-sp-40: var(--sp-40);
+  --spacing-sp-48: var(--sp-48);
+  --spacing-sp-64: var(--sp-64);
+  --spacing-sp-80: var(--sp-80);
+  --spacing-sp-96: var(--sp-96);
+  --spacing-sp-128: var(--sp-128);
+
+  /* Font sizes */
+  --font-size-size-xs: var(--text-xs);
+  --font-size-size-sm: var(--text-sm);
+  --font-size-size-base: var(--text-base);
+  --font-size-size-lg: var(--text-lg);
+  --font-size-size-xl: var(--text-xl);
+  --font-size-size-2xl: var(--text-2xl);
+  --font-size-size-3xl: var(--text-3xl);
+  --font-size-size-4xl: var(--text-4xl);
+  --font-size-size-5xl: var(--text-5xl);
+  --font-size-size-6xl: var(--text-6xl);
+
+  /* Radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-pill: var(--radius-pill);
+}
