@@ -3,11 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import Footer from '../../components/Footer.astro';
 import '../../styles/contact.css';
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="VIO - 唯創" lang="zh-Hant" headerLang="zh">
   <Fragment slot="scripts">
-    <script src="/js/contact.js" is:inline></script>
+    <script src={`${basePath}/js/contact.js`} is:inline></script>
   </Fragment>
 
   <main class="contact-main" style="min-height: 80vh; padding-top: 120px; padding-bottom: 80px;">

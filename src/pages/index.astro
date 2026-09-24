@@ -6,6 +6,9 @@ import ArrowButton from '../components/ArrowButton.astro';
 import EngineeringRecords from '../components/EngineeringRecords.astro';
 import ClientsMarquee from '../components/ClientsMarquee.astro';
 import '../styles/home.css';
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (path: string) => `${basePath}${path}`;
 ---
 
 <BaseLayout title="VIO - 唯創" lang="zh-Hant" headerLang="zh">
@@ -20,8 +23,8 @@ import '../styles/home.css';
 
         <div class="hero-video-wrapper">
           <video id="hero-video" autoplay muted loop playsinline>
-            <source src="/picture/index/hero_boomerang.webm" type="video/webm" />
-            <source src="/picture/index/hero_boomerang.mp4" type="video/mp4" />
+            <source src={asset('/picture/index/hero_boomerang.webm')} type="video/webm" />
+            <source src={asset('/picture/index/hero_boomerang.mp4')} type="video/mp4" />
           </video>
         </div>
       </div>
@@ -66,19 +69,19 @@ import '../styles/home.css';
 
         <div class="process-timeline">
           <div class="process-step">
-            <img src="/picture/index/ENGINEERING_DEFINE.svg" class="step-icon-img" alt="需求與工程評估" />
+            <img src={asset('/picture/index/ENGINEERING_DEFINE.svg')} class="step-icon-img" alt="需求與工程評估" />
             <h4 class="step-title tc-text">需求與環境評估</h4>
             <p class="step-desc tc-text">全面評估設備規格、安裝環境與場域限制，奠定最精準的工程防護基礎。</p>
           </div>
 
           <div class="process-step">
-            <img src="/picture/index/ENGINEERING_DESIGN.svg" class="step-icon-img" alt="設計與性能驗證" />
+            <img src={asset('/picture/index/ENGINEERING_DESIGN.svg')} class="step-icon-img" alt="設計與性能驗證" />
             <h4 class="step-title tc-text">設計與性能驗證</h4>
             <p class="step-desc tc-text">依防護標準規劃結構與隔震配置，並透過嚴謹測試確認耐震防護性能。</p>
           </div>
 
           <div class="process-step">
-            <img src="/picture/index/ENGINEERING_DELIVER.svg" class="step-icon-img" alt="製造與現場整合" />
+            <img src={asset('/picture/index/ENGINEERING_DELIVER.svg')} class="step-icon-img" alt="製造與現場整合" />
             <h4 class="step-title tc-text">製造與現場整合</h4>
             <p class="step-desc tc-text">嚴格把關製造與組裝品質，確保工程規格精準落實於現場安裝。</p>
           </div>
@@ -185,7 +188,7 @@ import '../styles/home.css';
             <p class="achieve-desc tc-text">地震衝擊加速度 (gal) 折減</p>
           </div>
           <div class="achievement-card">
-            <h3 class="achieve-value"><img src="/picture/index/logo_NCREE.webp" alt="NCREE x VIO" class="achieve-logo" /></h3>
+            <h3 class="achieve-value"><img src={asset('/picture/index/logo_NCREE.webp')} alt="NCREE x VIO" class="achieve-logo" /></h3>
             <p class="achieve-desc tc-text">與國家地震工程研究中心共同研發</p>
           </div>
         </div>
@@ -325,7 +328,7 @@ import '../styles/home.css';
               <h3 class="tc-text">找不到合適的產品？</h3>
               <p class="tc-text">提供設備條件與場域需求，我們的工程團隊會協助您找到合適的隔震或消能配置。</p>
             </div>
-            <a href="/contact/" class="consult-link tc-text">提出工程需求</a>
+            <a href={`${basePath}/contact/`} class="consult-link tc-text">提出工程需求</a>
           </aside>
           </div>
 

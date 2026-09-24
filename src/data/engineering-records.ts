@@ -1,5 +1,7 @@
 export type SiteIntensity = string;
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 export interface LocalizedLabel {
   zh: string;
   en: string;
@@ -117,7 +119,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '資訊設備耐震保護', en: 'Seismic protection for IT equipment' },
         product: { zh: '設備隔震系統', en: 'Equipment isolation system' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=jiasian-2010',
+        caseUrl: `${basePath}/contact/?case=jiasian-2010`,
       },
     ],
   },
@@ -146,7 +148,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '伺服器設備防護', en: 'Server equipment protection' },
         product: { zh: '設備隔震系統', en: 'Equipment isolation system' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=nantou-2013-tainan',
+        caseUrl: `${basePath}/contact/?case=nantou-2013-tainan`,
       },
       {
         id: 'nantou-it-room',
@@ -162,7 +164,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '關鍵資訊設備防護', en: 'Critical IT equipment protection' },
         product: { zh: '高性能隔震平台', en: 'High-performance isolation platform' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=nantou-2013',
+        caseUrl: `${basePath}/contact/?case=nantou-2013`,
       },
       {
         id: 'taipei-archive',
@@ -178,7 +180,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '典藏設備防護', en: 'Collection storage protection' },
         product: { zh: '精密隔震平台', en: 'Precision isolation platform' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=nantou-2013-taipei',
+        caseUrl: `${basePath}/contact/?case=nantou-2013-taipei`,
       },
     ],
   },
@@ -207,7 +209,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '精密製程設備防護', en: 'Precision process equipment protection' },
         product: { zh: '客製化隔震系統', en: 'Custom isolation system' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=meinong-2016',
+        caseUrl: `${basePath}/contact/?case=meinong-2016`,
       },
       {
         id: 'kaohsiung-lab',
@@ -223,7 +225,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '精密儀器減振', en: 'Precision instrument vibration control' },
         product: { zh: '主動式減振平台', en: 'Active vibration isolation platform' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=meinong-2016-kaohsiung',
+        caseUrl: `${basePath}/contact/?case=meinong-2016-kaohsiung`,
       },
     ],
   },
@@ -252,7 +254,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '醫療設備耐震防護', en: 'Seismic protection for medical equipment' },
         product: { zh: '低頻隔震平台', en: 'Low-frequency isolation platform' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=taitung-2022',
+        caseUrl: `${basePath}/contact/?case=taitung-2022`,
       },
       {
         id: 'taichung-control-room',
@@ -268,7 +270,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '控制設備穩定化', en: 'Control equipment stabilization' },
         product: { zh: '機櫃隔震底座', en: 'Rack isolation base' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=taitung-2022-taichung',
+        caseUrl: `${basePath}/contact/?case=taitung-2022-taichung`,
       },
     ],
   },
@@ -315,7 +317,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '醫療關鍵設備防護', en: 'Protection for critical medical equipment' },
         product: { zh: '高承載隔震系統', en: 'High-load isolation system' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=hualien-2024',
+        caseUrl: `${basePath}/contact/?case=hualien-2024`,
       },
       {
         id: 'taipei-museum',
@@ -331,7 +333,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '文物與展示設備防護', en: 'Protection for collections and displays' },
         product: { zh: '精密隔震平台', en: 'Precision isolation platform' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=hualien-2024-taipei',
+        caseUrl: `${basePath}/contact/?case=hualien-2024-taipei`,
       },
       {
         id: 'hsinchu-fab',
@@ -347,7 +349,7 @@ export const engineeringEvents: EngineeringEvent[] = [
         application: { zh: '高科技廠務設備防護', en: 'High-tech facility equipment protection' },
         product: { zh: '模組化隔震底座', en: 'Modular isolation base' },
         observation: pendingObservation(),
-        caseUrl: '/contact/?case=hualien-2024-hsinchu',
+        caseUrl: `${basePath}/contact/?case=hualien-2024-hsinchu`,
       },
     ],
   },

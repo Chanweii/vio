@@ -5,6 +5,7 @@ export interface Props {
 
 const { lang = 'zh' } = Astro.props;
 const isEnglish = lang === 'en';
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const copy = isEnglish
   ? {
@@ -19,16 +20,16 @@ const copy = isEnglish
     };
 
 const clients = [
-  { src: '/picture/clients/umc.svg', alt: isEnglish ? 'UMC' : '聯華電子' },
-  { src: '/picture/clients/jasm.svg', alt: 'JASM' },
-  { src: '/picture/clients/chunghwa-telecom.svg', alt: isEnglish ? 'Chunghwa Telecom' : '中華電信' },
-  { src: '/picture/clients/academia-sinica.svg', alt: isEnglish ? 'Academia Sinica' : '中央研究院' },
-  { src: '/picture/clients/central-weather-bureau.svg', alt: isEnglish ? 'Central Weather Bureau' : '中央氣象局' },
-  { src: '/picture/clients/nari.png', alt: isEnglish ? 'National Atomic Research Institute' : '國家原子能科技研究院' },
-  { src: '/picture/clients/nchc.svg', alt: isEnglish ? 'National Center for High-performance Computing' : '國家高速網路與計算中心' },
-  { src: '/picture/clients/fire-services.svg', alt: isEnglish ? 'Fire Services' : '消防機關' },
-  { src: '/picture/clients/chunghwa-post.svg', alt: isEnglish ? 'Chunghwa Post' : '中華郵政' },
-  { src: '/picture/clients/tfaz.svg', alt: 'TFAZ' },
+  { src: `${basePath}/picture/clients/umc.svg`, alt: isEnglish ? 'UMC' : '聯華電子' },
+  { src: `${basePath}/picture/clients/jasm.svg`, alt: 'JASM' },
+  { src: `${basePath}/picture/clients/chunghwa-telecom.svg`, alt: isEnglish ? 'Chunghwa Telecom' : '中華電信' },
+  { src: `${basePath}/picture/clients/academia-sinica.svg`, alt: isEnglish ? 'Academia Sinica' : '中央研究院' },
+  { src: `${basePath}/picture/clients/central-weather-bureau.svg`, alt: isEnglish ? 'Central Weather Bureau' : '中央氣象局' },
+  { src: `${basePath}/picture/clients/nari.png`, alt: isEnglish ? 'National Atomic Research Institute' : '國家原子能科技研究院' },
+  { src: `${basePath}/picture/clients/nchc.svg`, alt: isEnglish ? 'National Center for High-performance Computing' : '國家高速網路與計算中心' },
+  { src: `${basePath}/picture/clients/fire-services.svg`, alt: isEnglish ? 'Fire Services' : '消防機關' },
+  { src: `${basePath}/picture/clients/chunghwa-post.svg`, alt: isEnglish ? 'Chunghwa Post' : '中華郵政' },
+  { src: `${basePath}/picture/clients/tfaz.svg`, alt: 'TFAZ' },
 ];
 ---
 

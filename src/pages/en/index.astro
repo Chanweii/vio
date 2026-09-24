@@ -6,6 +6,9 @@ import ArrowButton from '../../components/ArrowButton.astro';
 import EngineeringRecords from '../../components/EngineeringRecords.astro';
 import ClientsMarquee from '../../components/ClientsMarquee.astro';
 import '../../styles/home.css';
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (path: string) => `${basePath}${path}`;
 ---
 
 <BaseLayout title="VIO - Engineering Consulting" lang="en" headerLang="en">
@@ -20,8 +23,8 @@ import '../../styles/home.css';
 
         <div class="hero-video-wrapper">
           <video id="hero-video" autoplay muted loop playsinline>
-            <source src="/picture/index/hero_boomerang.webm" type="video/webm" />
-            <source src="/picture/index/hero_boomerang.mp4" type="video/mp4" />
+            <source src={asset('/picture/index/hero_boomerang.webm')} type="video/webm" />
+            <source src={asset('/picture/index/hero_boomerang.mp4')} type="video/mp4" />
           </video>
         </div>
       </div>
@@ -65,19 +68,19 @@ import '../../styles/home.css';
 
         <div class="process-timeline">
           <div class="process-step">
-            <img src="/picture/index/ENGINEERING_DEFINE.svg" class="step-icon-img" alt="Requirements & Environment Assessment" />
+            <img src={asset('/picture/index/ENGINEERING_DEFINE.svg')} class="step-icon-img" alt="Requirements & Environment Assessment" />
             <h4 class="step-title en-text">Requirements &amp; Environment Assessment</h4>
             <p class="step-desc en-text">Comprehensively evaluate equipment specifications, installation environment, and site constraints to establish the most precise engineering protection foundation.</p>
           </div>
 
           <div class="process-step">
-            <img src="/picture/index/ENGINEERING_DESIGN.svg" class="step-icon-img" alt="Design & Performance Validation" />
+            <img src={asset('/picture/index/ENGINEERING_DESIGN.svg')} class="step-icon-img" alt="Design & Performance Validation" />
             <h4 class="step-title en-text">Design &amp; Performance Validation</h4>
             <p class="step-desc en-text">Plan structural and isolation configurations based on protection standards, and confirm seismic protection performance through rigorous testing.</p>
           </div>
 
           <div class="process-step">
-            <img src="/picture/index/ENGINEERING_DELIVER.svg" class="step-icon-img" alt="Manufacturing & On-site Integration" />
+            <img src={asset('/picture/index/ENGINEERING_DELIVER.svg')} class="step-icon-img" alt="Manufacturing & On-site Integration" />
             <h4 class="step-title en-text">Manufacturing &amp; On-site Integration</h4>
             <p class="step-desc en-text">Strictly control manufacturing and assembly quality to ensure engineering specifications are precisely implemented in on-site installations.</p>
           </div>
@@ -187,7 +190,7 @@ import '../../styles/home.css';
             <p class="achieve-desc en-text">Representative seismic impact reduction</p>
           </div>
           <div class="achievement-card">
-            <h3 class="achieve-value"><img src="/picture/index/logo_NCREE.webp" alt="NCREE x VIO" class="achieve-logo" /></h3>
+            <h3 class="achieve-value"><img src={asset('/picture/index/logo_NCREE.webp')} alt="NCREE x VIO" class="achieve-logo" /></h3>
             <p class="achieve-desc en-text">Co-developed with the National Center for Research on Earthquake Engineering</p>
           </div>
         </div>
@@ -306,7 +309,7 @@ import '../../styles/home.css';
                 <h3 class="en-text">Can’t find what you’re looking for?</h3>
                 <p class="en-text">Share your equipment conditions and site requirements. Our engineering team will help identify the right isolation or damping configuration.</p>
               </div>
-              <a href="/contact/" class="consult-link en-text">Custom request</a>
+              <a href={`${basePath}/contact/`} class="consult-link en-text">Custom request</a>
             </aside>
           </div>
 

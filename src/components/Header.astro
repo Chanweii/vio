@@ -6,16 +6,20 @@ export interface Props {
 }
 
 const { lang = 'zh' } = Astro.props;
-const solid = Astro.url.pathname.replace(/\/$/, '') === '/contact';
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname;
+const chineseHome = `${basePath}/`;
+const englishHome = `${basePath}/en/`;
+const contactPath = `${basePath}/contact`;
+const solid = currentPath.replace(/\/$/, '') === contactPath;
 
 // Keep language links on the equivalent route whenever that translation exists.
 // At present the bilingual home page is the shared route; untranslated pages
 // intentionally fall back to the destination language's home page.
-const englishHref = currentPath === '/' || currentPath === '/en/' ? '/en/' : '/en/';
-const chineseHref = currentPath === '/' || currentPath === '/en/' ? '/' : currentPath;
+const englishHref = englishHome;
+const chineseHref = currentPath === chineseHome || currentPath === englishHome ? chineseHome : currentPath;
 
-const homeHref = lang === 'en' ? '/en/' : '/';
+const homeHref = lang === 'en' ? englishHome : chineseHome;
 const navItems =
   lang === 'en'
     ? [
@@ -32,7 +36,9 @@ const navItems =
       ];
 // 原始 English 版按鈕連到 "#"(尚未連到聯絡頁),中文版連到 contact.html。
 // 這裡保留原本行為,之後聯絡頁做好英文版時再改成 "/contact/"。
-const contactHref = lang === 'en' ? '#' : '/contact/';
+const contactHref = lang === 'en' ? '#' : `${basePath}/contact/`;
+const lightLogo = `${basePath}/picture/index/logo_light.webp`;
+const darkLogo = `${basePath}/picture/index/logo_dark.webp`;
 const contactLabel = lang === 'en' ? 'Contact Us' : '聯絡我們';
 const menuAriaLabel = lang === 'en' ? 'Menu' : '選單';
 const themeAriaLabel = lang === 'en' ? 'Toggle Theme' : '切換深淺模式';
@@ -44,8 +50,8 @@ const themeAriaLabel = lang === 'en' ? 'Toggle Theme' : '切換深淺模式';
       <div class="logo">
         <a href={homeHref}>
           <!-- 根據深淺色模式透過 CSS 切換 -->
-          <img src="/picture/index/logo_light.webp" class="logo-img logo-dark" alt="VIO" style="height: 40px;" />
-          <img src="/picture/index/logo_dark.webp" class="logo-img logo-light" alt="VIO" style="height: 40px;" />
+          <img src={lightLogo} class="logo-img logo-dark" alt="VIO" style="height: 40px;" />
+          <img src={darkLogo} class="logo-img logo-light" alt="VIO" style="height: 40px;" />
         </a>
       </div>
 

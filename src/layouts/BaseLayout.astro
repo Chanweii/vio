@@ -10,6 +10,8 @@ export interface Props {
 }
 
 const { title, lang = 'zh-Hant', headerLang = 'zh', dataTheme = 'light' } = Astro.props;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const mainScript = `${basePath}/js/main.js`;
 
 // 合併三個頁面原本各自宣告的 Material Symbols icon 子集,
 // 補上聯絡頁表單其實有用到、但原本 head 沒宣告的 upload_file / check_circle / send。
@@ -50,7 +52,7 @@ const fontHref = lang === 'en'
   <body>
     <Header lang={headerLang} />
     <slot />
-    <script src="/js/main.js" is:inline></script>
+    <script src={mainScript} is:inline></script>
     <slot name="scripts" />
   </body>
 </html>

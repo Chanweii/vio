@@ -8,6 +8,7 @@ export interface Props {
 
 const { lang = 'zh' } = Astro.props;
 const isEnglish = lang === 'en';
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const locale = isEnglish ? 'en' : 'zh';
 const events = normalizeEngineeringRecords(engineeringEvents);
 const formatEventDate = (date: string) => {
@@ -72,7 +73,7 @@ const copy = isEnglish
         <h2 class:list={['engineering-evidence__title', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{copy.title}</h2>
         <p class:list={['engineering-evidence__lead', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{copy.lead}</p>
       </div>
-      <ArrowButton text={copy.cta} href="/contact/?topic=engineering-records" class="engineering-evidence__cta" />
+      <ArrowButton text={copy.cta} href={`${basePath}/contact/?topic=engineering-records`} class="engineering-evidence__cta" />
     </header>
 
     <nav class="engineering-evidence__timeline" aria-label={copy.timeline}>

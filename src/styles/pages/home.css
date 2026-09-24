@@ -1247,7 +1247,7 @@
     overflow: hidden;
     background:
         linear-gradient(90deg, rgba(14, 17, 18, 0.92), rgba(14, 17, 18, 0.7) 54%, rgba(14, 17, 18, 0.84)),
-        url('/picture/clients/concrete-crack.jpg') center 48% / cover no-repeat;
+        url('/vio/picture/clients/concrete-crack.jpg') center 48% / cover no-repeat;
     color: #fff;
 }
 .clients-header {

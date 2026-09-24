@@ -1,6 +1,10 @@
 ---
 // 共用 Footer — 目前只有中文頁面(首頁、聯絡頁)使用。
 // 原本 index-en.html 草稿還沒做到這裡,先維持原狀,等英文版內容定案再套用。
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeHref = `${basePath}/`;
+const lightLogo = `${basePath}/picture/index/logo_light.webp`;
+const darkLogo = `${basePath}/picture/index/logo_dark.webp`;
 ---
 
 <footer class="footer">
@@ -9,9 +13,9 @@
       <!-- Column 1: Brand & Address -->
       <div class="footer-col brand-col">
         <div class="footer-logo">
-          <a href="/">
-            <img src="/picture/index/logo_light.webp" class="logo-img logo-dark" alt="VIO" style="height: 32px;" />
-            <img src="/picture/index/logo_dark.webp" class="logo-img logo-light" alt="VIO" style="height: 32px;" />
+          <a href={homeHref}>
+            <img src={lightLogo} class="logo-img logo-dark" alt="VIO" style="height: 32px;" />
+            <img src={darkLogo} class="logo-img logo-light" alt="VIO" style="height: 32px;" />
           </a>
         </div>
         <p class="company-name tc-text">
