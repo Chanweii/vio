@@ -1,0 +1,32 @@
+---
+import HeroSection from './HeroSection.astro';
+import AboutSection from './AboutSection.astro';
+import EngineeringSection from './EngineeringSection.astro';
+import SolutionsSection from './SolutionsSection.astro';
+import AchievementsSection from './AchievementsSection.astro';
+import ProductsSection from './ProductsSection.astro';
+import ClientsMarquee from '../ClientsMarquee.astro';
+import '../../styles/home.css';
+
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+---
+
+<div class="scroll-progress" aria-hidden="true">
+  <span class="scroll-progress__bar" data-scroll-progress></span>
+</div>
+
+<main>
+  <HeroSection lang={lang} />
+  <AboutSection lang={lang} />
+  <EngineeringSection lang={lang} />
+  <SolutionsSection lang={lang} />
+  <AchievementsSection lang={lang} />
+  <ProductsSection lang={lang} />
+  <ClientsMarquee lang={lang} />
+</main>
+
+<script src="../../scripts/home.ts"></script>

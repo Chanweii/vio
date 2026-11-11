@@ -11,6 +11,8 @@ Astro 的頁面來源都放在 `src/pages/`。這裡可以把它理解成本專�
 | `/` | `src/pages/index.astro` | `dist/index.html` |
 | `/en/` | `src/pages/en/index.astro` | `dist/en/index.html` |
 | `/contact/` | `src/pages/contact/index.astro` | `dist/contact/index.html` |
+| `/cases/` | `src/pages/cases/index.astro` | `dist/cases/index.html` |
+| `/en/cases/` | `src/pages/en/cases/index.astro` | `dist/en/cases/index.html` |
 
 ## Naming Pattern
 

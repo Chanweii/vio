@@ -7,6 +7,14 @@
 ```text
 src/
   components/
+    home/
+      HomePage.astro
+      HeroSection.astro
+      AboutSection.astro
+      EngineeringSection.astro
+      SolutionsSection.astro
+      AchievementsSection.astro
+      ProductsSection.astro
     CtaSection.astro
     Footer.astro
     Header.astro
@@ -21,6 +29,10 @@ src/
     home.css
     contact.css
     pages/
+  scripts/
+    site.ts
+    home.ts
+    engineering-evidence.ts
 ```
 
 ## Public Assets
@@ -28,14 +40,12 @@ src/
 ```text
 public/
   js/
-    main.js
     contact.js
-    hero-animation.js
   picture/
     index/
 ```
 
-`public/` 內的檔案會原樣複製到正式網站。圖片、影片和必須保留檔名的舊 JS 放在這裡。
+`public/` 內的檔案會原樣複製到正式網站。首頁互動程式已集中在 `src/scripts/`；`public/js/contact.js` 目前只服務聯絡表單。
 
 ## Build Output
 
@@ -43,7 +53,7 @@ public/
 dist/
 ```
 
-`dist/` 是 `npm run build` 產生的正式輸出。不要直接修改這個資料夾；需要調整網站時，改 `src/` 或 `public/` 後重新建置。
+`dist/` 是 `pnpm build` 產生的正式輸出。不要直接修改這個資料夾；需要調整網站時，改 `src/` 或 `public/` 後重新建置。
 
 ## Style Entry Points
 

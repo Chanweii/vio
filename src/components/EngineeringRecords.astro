@@ -4,9 +4,12 @@ import { engineeringEvents, normalizeEngineeringRecords } from '../data/engineer
 
 export interface Props {
   lang?: 'zh' | 'en';
+  /** Render as the main content of its own page (h1, no "view all" button). */
+  standalone?: boolean;
 }
 
-const { lang = 'zh' } = Astro.props;
+const { lang = 'zh', standalone = false } = Astro.props;
+const Heading = standalone ? 'h1' : 'h2';
 const isEnglish = lang === 'en';
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const locale = isEnglish ? 'en' : 'zh';
@@ -65,15 +68,17 @@ const copy = isEnglish
     };
 ---
 
-<section class="engineering-evidence" data-engineering-evidence data-language-section="records">
+<section class:list={['engineering-evidence', { 'engineering-evidence--page': standalone }]} data-engineering-evidence data-language-section="records">
   <div class="engineering-evidence__shell">
     <header class="engineering-evidence__header">
       <div class="engineering-evidence__intro">
         <p class="engineering-evidence__eyebrow en-text">{copy.eyebrow}</p>
-        <h2 class:list={['engineering-evidence__title', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{copy.title}</h2>
+        <Heading class:list={['engineering-evidence__title', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{copy.title}</Heading>
         <p class:list={['engineering-evidence__lead', { 'en-text': isEnglish, 'tc-text': !isEnglish }]}>{copy.lead}</p>
       </div>
-      <ArrowButton text={copy.cta} href={`${basePath}/contact/?topic=engineering-records`} class="engineering-evidence__cta" />
+      {!standalone && (
+        <ArrowButton text={copy.cta} href={`${basePath}/contact/?topic=engineering-records`} class="engineering-evidence__cta" />
+      )}
     </header>
 
     <nav class="engineering-evidence__timeline" aria-label={copy.timeline}>

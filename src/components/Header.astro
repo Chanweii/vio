@@ -11,13 +11,23 @@ const currentPath = Astro.url.pathname;
 const chineseHome = `${basePath}/`;
 const englishHome = `${basePath}/en/`;
 const contactPath = `${basePath}/contact`;
-const solid = currentPath.replace(/\/$/, '') === contactPath;
+const casesPath = `${basePath}/cases`;
+const englishCasesPath = `${basePath}/en/cases`;
+const normalizedPath = currentPath.replace(/\/$/, '');
+// Pages without a full-bleed hero use the solid header from the start.
+const solid = [contactPath, casesPath, englishCasesPath].includes(normalizedPath);
 
 // Keep language links on the equivalent route whenever that translation exists.
 // At present the bilingual home page is the shared route; untranslated pages
 // intentionally fall back to the destination language's home page.
-const englishHref = englishHome;
-const chineseHref = currentPath === chineseHome || currentPath === englishHome ? chineseHome : currentPath;
+const onCasesPage = normalizedPath === casesPath || normalizedPath === englishCasesPath;
+const englishHref = onCasesPage ? `${englishCasesPath}/` : englishHome;
+const chineseHref =
+  normalizedPath === englishCasesPath
+    ? `${casesPath}/`
+    : currentPath === chineseHome || currentPath === englishHome
+      ? chineseHome
+      : currentPath;
 
 const homeHref = lang === 'en' ? englishHome : chineseHome;
 const navItems =
@@ -55,7 +65,7 @@ const themeAriaLabel = lang === 'en' ? 'Toggle Theme' : '切換深淺模式';
         </a>
       </div>
 
-      <nav class="nav-links" id="primary-navigation">
+      <nav class="nav-links" id="primary-navigation" data-primary-navigation>
         {navItems.map((item) => (
           <a href={item.href} class={lang === 'en' ? 'en-text' : ''}>{item.label}</a>
         ))}
@@ -86,7 +96,7 @@ const themeAriaLabel = lang === 'en' ? 'Toggle Theme' : '切換深淺模式';
         <span class="material-symbols-outlined">contrast</span>
       </button>
       <a href={contactHref} class="btn-primary btn-pill">{contactLabel}</a>
-      <button type="button" class="menu-toggle" id="mobileMenuBtn" aria-label={menuAriaLabel} aria-controls="primary-navigation" aria-expanded="false">
+      <button type="button" class="menu-toggle" data-menu-toggle aria-label={menuAriaLabel} aria-controls="primary-navigation" aria-expanded="false">
         <span class="material-symbols-outlined">menu</span>
       </button>
     </div>

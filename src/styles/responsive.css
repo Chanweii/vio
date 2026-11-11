@@ -94,10 +94,14 @@
     .solutions-img-col { border-right: none; }
     .solutions-content-col {
         margin-left: 0;
-        margin-top: -60px;
+        margin-top: 0;
+        min-height: 0;
         padding: var(--sp-40) var(--sp-24);
     }
-    .solutions-img-col .img-wrapper { min-height: 300px; }
+    .solutions-img-col .img-wrapper {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+    }
     .slider-counter {
         bottom: auto;
         top: -40px;
@@ -174,7 +178,7 @@
 
     /* Engineering */
     .engineering-section .eng-header {
-        padding: var(--sp-40) var(--sp-24) var(--sp-32);
+        padding: 0 var(--sp-24) var(--sp-32);
     }
     .eng-desc {
         max-width: 100%;
@@ -279,7 +283,7 @@
     .cta-title { font-size: 28px; }
 
     /* Products */
-    .products-section { padding: var(--sp-80) 0; }
+    .products-section { padding-block: var(--home-section-space); }
     .products-header {
         flex-direction: column;
         align-items: flex-start;
@@ -303,12 +307,12 @@
     .product-series-card,
     .product-consult-card {
         flex-basis: min(80vw, 330px);
-        min-height: 520px;
+        min-height: 420px;
     }
     .product-card-content { padding-top: var(--sp-24); }
     .product-visual { height: 240px; }
     .product-consult-card { padding: var(--sp-24); }
-    .consult-copy { margin-top: 180px; }
+    .consult-copy { margin-top: 100px; }
     .product-nav-button {
         width: 48px;
         height: 48px;

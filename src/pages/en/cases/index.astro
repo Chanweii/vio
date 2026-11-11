@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EngineeringRecords from '../../../components/EngineeringRecords.astro';
+import CtaSection from '../../../components/CtaSection.astro';
+import Footer from '../../../components/Footer.astro';
+import '../../../styles/home.css';
+---
+
+<BaseLayout title="Seismic Records | VIO" lang="en" headerLang="en">
+  <Fragment slot="head">
+    <meta
+      name="description"
+      content="Understand VIO protection-system performance through past earthquakes, epicentral distance and site intensity."
+    />
+  </Fragment>
+
+  <main>
+    <EngineeringRecords lang="en" standalone />
+  </main>
+  <CtaSection />
+  <Footer />
+</BaseLayout>

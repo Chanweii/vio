@@ -45,9 +45,9 @@
     --color-green-light: rgba(0, 135, 90, 0.1);
 
     /* ─── Surface & Text (Light Mode) ─── */
-    --bg-color: #eff0f0;
+    --bg-color: #fcfcfc;
     --bg-surface: #FFFFFF;
-    --bg-muted: #f5f7fa;
+    --bg-muted: #fcfcfc;
     --text-color: #333333;
     --title-color: #1A1A1A;
 
@@ -58,7 +58,7 @@
     /* ─── Header ─── */
     --header-text-hover: #CE3028;
     --header-bg-solid: #FFFFFF;
-    --header-border: rgba(0, 0, 0, 0.05);
+    --header-border: rgba(17, 17, 17, 0.12);
 
     /* ─── Editorial Wireframe ─── */
     --wire-stroke: #111111;
@@ -101,7 +101,7 @@
 
     --header-text-hover: #CE3028;
     --header-bg-solid: #18191B;
-    --header-border: rgba(255, 255, 255, 0.05);
+    --header-border: rgba(255, 255, 255, 0.12);
 
     --wire-stroke: #EEEEEE;
     --wire-shadow: #EEEEEE;

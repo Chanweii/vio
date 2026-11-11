@@ -1,0 +1,68 @@
+---
+import ArrowButton from '../ArrowButton.astro';
+
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (path: string) => `${basePath}${path}`;
+const casesHref = isZh ? `${basePath}/cases/` : `${basePath}/en/cases/`;
+const casesLabel = isZh ? '查看所有案例' : 'View All Cases';
+
+const items = isZh
+  ? [
+      { value: 20, suffix: '+', unit: '年', description: '隔震與振動控制工程經驗' },
+      { value: 1000, suffix: '+', unit: '組', description: '隔震裝置產業應用' },
+      { value: 4, suffix: '+', unit: '項', description: '國內外發明專利' },
+      { value: 3000, suffix: '', unit: '次', description: '疲勞耐久性測試' },
+      { value: 90, suffix: '', unit: '%', description: '地震衝擊加速度 (gal) 折減' },
+    ]
+  : [
+      { value: 20, suffix: '', unit: '+ YEARS', description: 'Experience in isolation and vibration control engineering' },
+      { value: 3000, suffix: '', unit: '+', description: 'Industrial applications of isolation devices' },
+      { value: 4, suffix: '', unit: '+ PATENTS', description: 'Domestic and international invention patents' },
+      { value: 3000, suffix: '', unit: ' CYCLES', description: 'Fatigue durability testing' },
+      { value: 90, suffix: '', unit: '%', description: 'Representative seismic impact reduction' },
+    ];
+---
+
+<section class="achievements-section" data-language-section="achievements">
+  <div class="eng-container">
+    <div class="eng-header">
+      {isZh && <p class="eng-eyebrow en-text">BY THE NUMBERS</p>}
+      <h2 class:list={['eng-title', isZh ? 'tc-text' : 'en-text']}>
+        {isZh ? '經得起驗證的防護能力' : 'Engineering Achievements'}
+      </h2>
+      <p class:list={['eng-desc', isZh ? 'tc-text' : 'en-text']}>
+        {isZh
+          ? '從自主研發、產業應用到測試驗證，唯創持續累積隔震與振動控制的工程經驗與性能實證。'
+          : 'From independent R&D and industry applications to testing and verification, VIO continues to accumulate engineering experience and performance validation in seismic isolation and vibration control.'}
+      </p>
+    </div>
+
+    <div class="achievements-grid">
+      {items.map((item) => (
+        <div class="achievement-card">
+          <h3 class="achieve-value">
+            <span><span class="counter" data-target={item.value}>0</span>{item.suffix}</span>
+            <span class:list={['unit', isZh ? 'tc-text' : 'en-text']}>{item.unit}</span>
+          </h3>
+          <p class:list={['achieve-desc', isZh ? 'tc-text' : 'en-text']}>{item.description}</p>
+        </div>
+      ))}
+      <div class="achievement-card">
+        <h3 class="achieve-value"><img src={asset('/picture/index/logo_NCREE.webp')} alt="NCREE x VIO" class="achieve-logo" /></h3>
+        <p class:list={['achieve-desc', isZh ? 'tc-text' : 'en-text']}>
+          {isZh ? '與國家地震工程研究中心共同研發' : 'Co-developed with the National Center for Research on Earthquake Engineering'}
+        </p>
+      </div>
+    </div>
+
+    <div class="achievements-cta">
+      <ArrowButton text={casesLabel} href={casesHref} />
+    </div>
+  </div>
+</section>

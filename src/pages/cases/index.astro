@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EngineeringRecords from '../../components/EngineeringRecords.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/home.css';
+---
+
+<BaseLayout title="歷次地震案例｜唯創 VIO" lang="zh-Hant" headerLang="zh">
+  <Fragment slot="head">
+    <meta
+      name="description"
+      content="透過歷次實際地震事件、震央距離與場址震度，了解唯創防護系統在不同地震條件下的表現與應用經驗。"
+    />
+  </Fragment>
+
+  <main>
+    <EngineeringRecords lang="zh" standalone />
+  </main>
+  <CtaSection />
+  <Footer />
+</BaseLayout>

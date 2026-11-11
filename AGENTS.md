@@ -18,12 +18,11 @@ Use this folder as the project root for development, design changes, builds, and
 Run commands from this folder.
 
 ```sh
-npm install
-npm run dev
-npm run build
+pnpm install
+pnpm dev
+pnpm build
 ```
 
 ## Deployment
 
 Publish `dist/`. Do not publish or edit the legacy static files in the parent folder for future site changes.
-

@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,6 +9,8 @@ export default defineConfig({
   // Preserve the original HTML's inline spacing during the migration.
   compressHTML: false,
   vite: {
-    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['lenis'],
+    },
   },
 });

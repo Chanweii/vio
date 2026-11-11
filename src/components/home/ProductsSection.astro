@@ -1,0 +1,127 @@
+---
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+type Category = 'equipment' | 'structural' | 'damping';
+type Product = {
+  category: Category;
+  index: string;
+  code: string;
+  name: string;
+  summary: string;
+  tags: string[];
+  visual: string;
+};
+
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const products: Product[] = isZh
+  ? [
+      { category: 'equipment', index: '01', code: 'MRB 精巧型', name: '精密設備隔震平台', summary: '低高度、輕量化的多軸滾動隔震平台，適合精密儀器、展示櫃與空間受限的安裝環境。', tags: ['35WD', '40WD', '45WD'], visual: 'mrb-compact' },
+      { category: 'equipment', index: '02', code: 'MRB 通用型', name: '設備與機櫃隔震平台', summary: '兼顧承載能力與配置彈性，適用於設備、機櫃、典藏櫃及多種工程安裝條件。', tags: ['30SD', '60WD'], visual: 'mrb-standard' },
+      { category: 'equipment', index: '03', code: 'VIOBase 1.0', name: '模組化設備隔震平台', summary: '整合滾動與阻尼機制，提供模組化隔震配置，降低設備承受的地震加速度反應。', tags: ['模組化', '設備防護'], visual: 'viobase-1' },
+      { category: 'equipment', index: '04', code: 'VIOBase 2.0', name: '高性能設備隔震平台', summary: '強化隔震與位移控制性能，針對高價值精密設備提供更完整的地震防護。', tags: ['高性能', '位移控制'], visual: 'viobase-2' },
+      { category: 'structural', index: '01', code: 'MRB 重型', name: '高承載結構隔震支承', summary: '面向高承載設備與特殊結構需求，提供穩定支承、隔震位移與地震反應控制能力。', tags: ['80B', '120B', '150B'], visual: 'mrb-heavy' },
+      { category: 'damping', index: '01', code: 'MVE', name: '多層黏彈性阻尼器', summary: '利用黏彈性材料的變形與耗能特性，吸收並消散設備與結構的振動能量。', tags: ['振動控制', '能量消散'], visual: 'mve' },
+      { category: 'damping', index: '02', code: 'MAB', name: '複合式金屬斜撐', summary: '透過金屬元件穩定變形進行耗能，適用於結構補強與地震反應控制。', tags: ['結構補強', '耐震控制'], visual: 'mab' },
+      { category: 'damping', index: '03', code: 'TMD', name: '調諧質量阻尼器', summary: '透過調諧質量吸收特定頻率的振動能量，降低設備、樓板與大跨度結構的振動反應。', tags: ['頻率調諧', '振動抑制'], visual: 'tmd' },
+    ]
+  : [
+      { category: 'equipment', index: '01', code: 'MRB Compact', name: 'Precision Equipment Isolation Platform', summary: 'A low-profile, lightweight rolling isolation platform for precision instruments, display cases, and space-constrained installations.', tags: ['35WD', '40WD', '45WD'], visual: 'mrb-compact' },
+      { category: 'equipment', index: '02', code: 'MRB Standard', name: 'Equipment & Cabinet Isolation Platform', summary: 'Balanced load capacity and configuration flexibility for equipment, cabinets, collections, and varied site conditions.', tags: ['30SD', '60WD'], visual: 'mrb-standard' },
+      { category: 'equipment', index: '03', code: 'VIOBase 1.0', name: 'Modular Equipment Isolation Platform', summary: 'A modular rolling and damping platform designed to reduce seismic acceleration transmitted to critical equipment.', tags: ['Modular', 'Equipment Protection'], visual: 'viobase-1' },
+      { category: 'equipment', index: '04', code: 'VIOBase 2.0', name: 'High-performance Equipment Isolation Platform', summary: 'Enhanced isolation and displacement control for comprehensive protection of high-value precision equipment.', tags: ['High Performance', 'Displacement Control'], visual: 'viobase-2' },
+      { category: 'structural', index: '01', code: 'MRB Heavy-duty', name: 'High-load Structural Isolation Bearing', summary: 'Stable support, isolation displacement, and seismic-response control for high-load equipment and special structures.', tags: ['80B', '120B', '150B'], visual: 'mrb-heavy' },
+      { category: 'damping', index: '01', code: 'MVE', name: 'Multilayer Viscoelastic Damper', summary: 'Viscoelastic deformation absorbs and dissipates vibration energy in equipment and structural applications.', tags: ['Vibration Control', 'Energy Dissipation'], visual: 'mve' },
+      { category: 'damping', index: '02', code: 'MAB', name: 'Composite Metallic Brace', summary: 'Stable metallic deformation dissipates seismic energy for structural strengthening and response control.', tags: ['Strengthening', 'Seismic Control'], visual: 'mab' },
+      { category: 'damping', index: '03', code: 'TMD', name: 'Tuned Mass Damper', summary: 'A tuned mass absorbs vibration at target frequencies to reduce equipment, floor, and long-span structural response.', tags: ['Frequency Tuning', 'Vibration Suppression'], visual: 'tmd' },
+    ];
+
+const categories: { key: Category; zh: string; en: string }[] = [
+  { key: 'equipment', zh: '設備隔震', en: 'Equipment Isolation' },
+  { key: 'structural', zh: '結構隔震', en: 'Structural Isolation' },
+  { key: 'damping', zh: '阻尼與消能', en: 'Damping' },
+];
+---
+
+<section class="products-section" data-language-section="products" data-products>
+  <div class="eng-container">
+    <div class="products-header">
+      <div class="products-heading-group">
+        <p class="eng-eyebrow en-text">OUR PRODUCT</p>
+        <h2 class:list={['eng-title', isZh ? 'tc-text' : 'en-text']}>{isZh ? '產品系列' : 'Product Series'}</h2>
+        <p class:list={['products-intro', isZh ? 'tc-text' : 'en-text']}>
+          {isZh
+            ? '從設備隔震到結構消能，依承載、位移與場域條件選擇合適的防護元件。'
+            : 'Select the right protection component for equipment, structures, and vibration-control requirements.'}
+        </p>
+      </div>
+
+      <nav class="product-filters" aria-label={isZh ? '產品分類索引' : 'Product category index'}>
+        {categories.map((category, index) => (
+          <button
+            type="button"
+            class:list={['product-filter', { 'is-active': index === 0 }]}
+            data-product-filter={category.key}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            {isZh ? category.zh : category.en}
+          </button>
+        ))}
+      </nav>
+    </div>
+
+    <div class="products-stage">
+      <div class="products-carousel" id="products-carousel" data-products-carousel>
+        {products.map((product) => (
+          <article
+            class="product-series-card"
+            data-product-category={product.category}
+            hidden={product.category !== 'equipment'}
+          >
+            <span class="product-index en-text">{product.index}</span>
+            <div class="product-visual">
+              <div
+                class={`product-color-block product-color--${product.visual}`}
+                role="img"
+                aria-label={`${product.code} ${isZh ? '產品視覺色塊' : 'product color block'}`}
+              ></div>
+            </div>
+            <div class="product-card-content">
+              <p class="product-code en-text">{product.code}</p>
+              <h3 class:list={['product-name', isZh ? 'tc-text' : 'en-text']}>{product.name}</h3>
+              <p class:list={['product-summary', isZh ? 'tc-text' : 'en-text']}>{product.summary}</p>
+            </div>
+          </article>
+        ))}
+
+        <aside class="product-consult-card">
+          <span class="consult-mark" aria-hidden="true"></span>
+          <div class="consult-copy">
+            <h3 class={isZh ? 'tc-text' : 'en-text'}>{isZh ? '找不到合適的產品？' : 'Can’t find what you’re looking for?'}</h3>
+            <p class={isZh ? 'tc-text' : 'en-text'}>
+              {isZh
+                ? '提供設備條件與場域需求，我們的工程團隊會協助您找到合適的隔震或消能配置。'
+                : 'Share your equipment conditions and site requirements. Our engineering team will help identify the right isolation or damping configuration.'}
+            </p>
+          </div>
+          <a href={`${basePath}/contact/`} class:list={['consult-link', isZh ? 'tc-text' : 'en-text']}>
+            {isZh ? '提出工程需求' : 'Custom request'}
+          </a>
+        </aside>
+      </div>
+
+      <div class="product-nav-controls" aria-label={isZh ? '產品系列瀏覽控制' : 'Product series navigation'}>
+        <button class="product-nav-button product-nav-prev" data-product-prev type="button" aria-label={isZh ? '上一個產品系列' : 'Previous product series'}>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+        </button>
+        <button class="product-nav-button product-nav-next" data-product-next type="button" aria-label={isZh ? '下一個產品系列' : 'Next product series'}>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

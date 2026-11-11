@@ -9,13 +9,14 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    transition: background-color 0.4s ease,
-        backdrop-filter 0.4s ease,
-        box-shadow 0.4s ease;
+    transition: background-color var(--ease-default),
+        border-color var(--ease-default),
+        color var(--ease-default);
     background-color: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid transparent;
+    box-shadow: none;
     color: #F2F2F2;
 }
 
@@ -24,12 +25,8 @@
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 1px solid var(--header-border);
-    box-shadow: 0 var(--sp-4) var(--sp-24) rgba(0, 0, 0, 0.05);
-    color: var(--header-text-color);
-}
-
-[data-theme="dark"] .header.is-floating {
-    box-shadow: 0 var(--sp-4) var(--sp-24) rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+    color: var(--title-color);
 }
 
 /* Logo Theme */
@@ -125,7 +122,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--header-text-color);
+    color: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -140,7 +137,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: var(--header-text-color);
+    color: inherit;
     align-items: center;
     justify-content: center;
     transition: color var(--ease-fast);
@@ -155,8 +152,6 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 var(--sp-40);
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
 }
 
 /* ─── Eyebrow (Section Label) ─── */
@@ -304,8 +299,7 @@
     justify-content: space-between;
     align-items: center;
     padding: var(--sp-24) var(--sp-32);
-    border: 1px solid var(--border-color);
-    border-top: none;
+    border-top: 1px solid var(--border-color);
 }
 .copyright, .legal-links a {
     font-size: var(--text-xs);

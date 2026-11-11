@@ -1,0 +1,120 @@
+---
+import ArrowButton from '../ArrowButton.astro';
+
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+
+const items = isZh
+  ? [
+      {
+        title: '設備與儀器隔震',
+        description: '針對半導體精密設備、分析儀器與關鍵控制設備，依設備重量、重心與安裝條件規劃隔震或振動控制配置。透過降低地震輸入與設備反應，減少對運轉穩定性與精度的影響。',
+        components: 'MRB 通用型/重型隔震平台、VIOBase 2.0 專利平台、TMD 調諧質量阻尼器。',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Device+Isolation',
+      },
+      {
+        title: '機櫃與典藏櫃隔震',
+        description: '適用於伺服器機櫃、多櫃組合與文物展示／典藏櫃，依櫃體形式配置隔震支承與連接方式。兼顧櫃體穩定與內部設備、資料或典藏物的防護需求。',
+        components: 'MRB 35WD / 40WD / 45WD（精巧型）、MRB 30SD / 60WD（通用型）、VIOBase 1.0 / 2.0',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Server+Isolation',
+      },
+      {
+        title: '區域與高架地板隔震',
+        description: '透過隔震單元、模組化框架與高架地板整合形成整體隔震區，適用於資料中心、資訊機房與多設備場域。可同步納入設備配置、線纜、動線與隔震位移空間的整體規劃。',
+        components: 'MRB 隔震高架地板模組化系統（配置 MRB 30WD / 60WD）。',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Isolation',
+      },
+      {
+        title: '結構隔震與消能',
+        description: '針對空中廊道、特殊結構連接與高承載支承需求，依荷載、位移與啟動條件規劃隔震或消能配置。兼顧日常使用條件與地震作用下的結構反應控制。',
+        components: 'MRB 80B / 120B / 150B（重型）、MVE 多層黏彈性阻尼器、MAB 複合式金屬斜撐。',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Structural+Isolation',
+      },
+    ]
+  : [
+      {
+        title: 'Equipment & Instrument Isolation',
+        description: 'For semiconductor precision equipment, analytical instruments, and critical control systems, we plan isolation or vibration control configurations based on equipment weight, center of gravity, and installation conditions. This reduces seismic input and protects operational stability and precision.',
+        components: 'MRB Standard/Heavy-duty Isolation Platforms, VIOBase 2.0 Patented Platform, and TMD Tuned Mass Damper.',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Device+Isolation',
+      },
+      {
+        title: 'Cabinet & Display Case Isolation',
+        description: 'For server cabinets, multi-cabinet groups, and museum display or storage cases, isolation supports and connections are configured around the cabinet form to protect both the enclosure and its contents.',
+        components: 'MRB 35WD / 40WD / 45WD Compact, MRB 30SD / 60WD Standard, and VIOBase 1.0 / 2.0.',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Server+Isolation',
+      },
+      {
+        title: 'Raised Floor & Zone Isolation',
+        description: 'Isolation units, modular frames, and raised floors form an integrated isolated zone for data centers, server rooms, and multi-equipment environments, including coordinated planning for cables, access, and displacement clearance.',
+        components: 'MRB modular isolated raised-floor system with MRB 30WD / 60WD units.',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Isolation',
+      },
+      {
+        title: 'Structural Isolation & Damping',
+        description: 'For skybridges, special structural connections, and high-load supports, isolation or energy-dissipation systems are configured around load, displacement, and activation requirements.',
+        components: 'MRB 80B / 120B / 150B Heavy-duty, MVE Multilayer Viscoelastic Damper, and MAB Composite Metallic Brace.',
+        image: 'https://via.placeholder.com/800x600/e0e0e0/666666?text=Structural+Isolation',
+      },
+    ];
+
+const first = items[0];
+---
+
+<section class="solutions-section" data-solutions-slider data-items={JSON.stringify(items)}>
+  <div class="eng-container">
+    <div class="solutions-grid">
+      <div class="solutions-nav-col">
+        <p class="solutions-eyebrow en-text">SOLUTIONS</p>
+        <h2 class:list={['solutions-title', isZh ? 'tc-text' : 'en-text']}>
+          {isZh ? '防護應用' : 'Protective Applications'}
+        </h2>
+        <ul class:list={['solutions-tabs', isZh ? 'tc-text' : 'en-text']}>
+          {items.map((item, index) => (
+            <li class:list={['tab-item', { active: index === 0 }]} data-solution-tab data-index={index}>
+              {item.title}<div class="active-indicator"></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="solutions-img-col">
+        <div class="img-wrapper">
+          <img src={first.image} id="solutions-img" data-solution-image alt={first.title} />
+        </div>
+        <div class="slider-counter en-text">
+          <span class="current-num" data-solution-current>01</span> <span class="total-num">/ 04</span>
+        </div>
+      </div>
+
+      <div class="solutions-content-col">
+        <div class="content-card">
+          <h3 class:list={['card-title', isZh ? 'tc-text' : 'en-text']} data-solution-title>{first.title}</h3>
+          <div data-solution-content>
+            <p class:list={['card-desc', isZh ? 'tc-text' : 'en-text']} data-solution-description>{first.description}</p>
+            <div class="card-section footer-section">
+              <h5 class:list={['section-title', isZh ? 'tc-text' : 'en-text']}>
+                {isZh ? '對應核心元件' : 'Corresponding Core Components'}
+              </h5>
+              <p class:list={['section-desc', isZh ? 'tc-text' : 'en-text']} data-solution-components>{first.components}</p>
+            </div>
+          </div>
+          <ArrowButton text={isZh ? '了解更多' : 'Learn More'} href="#" />
+        </div>
+
+        <div class="slider-controls">
+          <button class="nav-btn prev-btn" data-solution-prev aria-label={isZh ? '上一個方案' : 'Previous solution'}>
+            <span class="material-symbols-outlined">arrow_back</span>
+          </button>
+          <button class="nav-btn next-btn" data-solution-next aria-label={isZh ? '下一個方案' : 'Next solution'}>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

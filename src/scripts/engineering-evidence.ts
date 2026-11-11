@@ -1,11 +1,7 @@
-type EvidenceInstance = {
-  destroy: () => void;
-};
-
-const instances = new Map<HTMLElement, EvidenceInstance>();
+const initializedSections = new WeakSet<HTMLElement>();
 
 const initializeEvidence = (section: HTMLElement) => {
-  if (instances.has(section)) return;
+  if (initializedSections.has(section)) return;
 
   const timeline = Array.from(section.querySelectorAll<HTMLButtonElement>('[data-evidence-event]'));
   const defaultSites = new Map<string, string>();
@@ -89,9 +85,7 @@ const initializeEvidence = (section: HTMLElement) => {
   });
 
   activateEvent(activeEventId);
-  instances.set(section, {
-    destroy: () => {},
-  });
+  initializedSections.add(section);
 };
 
 const initializeAll = () => {
@@ -99,8 +93,3 @@ const initializeAll = () => {
 };
 
 initializeAll();
-document.addEventListener('astro:page-load', initializeAll);
-document.addEventListener('astro:before-swap', () => {
-  instances.forEach((instance) => instance.destroy());
-  instances.clear();
-});

@@ -1,0 +1,50 @@
+---
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (path: string) => `${basePath}${path}`;
+const isZh = lang === 'zh';
+
+const content = isZh
+  ? {
+      title: '從需求評估，到防護系統落地',
+      description: '我們針對精密設備與關鍵場域的防護需求，提供隔震、振動控制與工程整合服務，並透過系統設計、性能驗證與現場實施，回應不同設備與環境的防護需求。',
+      steps: [
+        ['DEFINE', '需求與環境評估', '全面評估設備規格、安裝環境與場域限制，奠定最精準的工程防護基礎。'],
+        ['DESIGN', '設計與性能驗證', '依防護標準規劃結構與隔震配置，並透過嚴謹測試確認耐震防護性能。'],
+        ['DELIVER', '製造與現場整合', '嚴格把關製造與組裝品質，確保工程規格精準落實於現場安裝。'],
+      ],
+    }
+  : {
+      title: 'From Requirement Assessment to Protection Implementation',
+      description: 'Addressing the protection needs of precision equipment and critical facilities, we provide isolation, vibration control, and engineering integration services. Through system design, performance validation, and on-site implementation, we respond to diverse equipment and environmental protection requirements.',
+      steps: [
+        ['DEFINE', 'Requirements & Environment Assessment', 'Comprehensively evaluate equipment specifications, installation environment, and site constraints to establish the most precise engineering protection foundation.'],
+        ['DESIGN', 'Design & Performance Validation', 'Plan structural and isolation configurations based on protection standards, and confirm seismic protection performance through rigorous testing.'],
+        ['DELIVER', 'Manufacturing & On-site Integration', 'Strictly control manufacturing and assembly quality to ensure engineering specifications are precisely implemented in on-site installations.'],
+      ],
+    };
+---
+
+<section class="engineering-section">
+  <div class="eng-container">
+    <div class="eng-header">
+      <p class="eng-eyebrow en-text">OUR SERVICES</p>
+      <h2 class:list={['eng-title', isZh ? 'tc-text' : 'en-text']}>{content.title}</h2>
+      <p class:list={['eng-desc', isZh ? 'tc-text' : 'en-text']}>{content.description}</p>
+    </div>
+
+    <div class="process-timeline">
+      {content.steps.map(([icon, title, description]) => (
+        <div class="process-step">
+          <img src={asset(`/picture/index/ENGINEERING_${icon}.svg`)} class="step-icon-img" alt={title} />
+          <h4 class:list={['step-title', isZh ? 'tc-text' : 'en-text']}>{title}</h4>
+          <p class:list={['step-desc', isZh ? 'tc-text' : 'en-text']}>{description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

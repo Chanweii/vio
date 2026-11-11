@@ -1,0 +1,34 @@
+---
+import ArrowButton from '../ArrowButton.astro';
+
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+---
+
+<section class="about-section">
+  <div class="about-container">
+    <div class="about-left">
+      <h2 class="en-text about-title">ABOUT VIO</h2>
+      {isZh && <h3 class="tc-text about-subtitle">關於唯創</h3>}
+    </div>
+    <div class="about-right">
+      {isZh ? (
+        <>
+          <p class="tc-text about-desc">自 2004 年成立以來，唯創持續投入設備隔震與振動控制技術，應用涵蓋半導體精密設備、數據中心、文物典藏與其他關鍵設施。</p>
+          <p class="about-desc">我們的服務不僅止於被動的設備支撐，更延伸至主動的振動與微震控制。從高科技廠房的精密設備，到一般建築的防護需求，唯創工程團隊為您提供從評估、設計到施工的完整解決方案。</p>
+          <ArrowButton text="了解我們" href="#" />
+        </>
+      ) : (
+        <>
+          <p class="en-text about-desc">Since its establishment in 2004, VIO has been dedicated to equipment isolation and vibration control technologies, serving semiconductor precision equipment, data centers, cultural heritage preservation, and other critical facilities.</p>
+          <p class="en-text about-desc">Our services go beyond passive equipment support, extending to active vibration and micro-vibration control. From precision equipment in high-tech fabs to the protection needs of general buildings, the VIO engineering team provides comprehensive solutions from assessment and design to implementation.</p>
+          <ArrowButton text="Learn More" href="#" />
+        </>
+      )}
+    </div>
+  </div>
+</section>

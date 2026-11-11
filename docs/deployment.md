@@ -8,16 +8,16 @@
 
 | 設定 | 值 |
 | --- | --- |
-| Install command | `npm ci` |
-| Build command | `npm run build` |
+| Install command | `pnpm install --frozen-lockfile` |
+| Build command | `pnpm build` |
 | Publish directory | `dist` |
 
 如果部署平台的專案根目錄是上一層 `VIO_website/`：
 
 | 設定 | 值 |
 | --- | --- |
-| Install command | `cd vio-astro && npm ci` |
-| Build command | `cd vio-astro && npm run build` |
+| Install command | `cd vio-astro && pnpm install --frozen-lockfile` |
+| Build command | `cd vio-astro && pnpm build` |
 | Publish directory | `vio-astro/dist` |
 
 ## Domain
@@ -46,4 +46,3 @@ SITE_URL=https://your-domain.example
 3. 檢查影片背景、深淺色切換、手機選單。
 4. 檢查舊網址重新導向。
 5. 確認無誤後，再清理上一層舊站根目錄的 HTML/CSS/JS/圖片。
-

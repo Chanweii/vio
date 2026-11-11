@@ -1,0 +1,42 @@
+---
+interface Props {
+  lang: 'zh' | 'en';
+}
+
+const { lang } = Astro.props;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const asset = (path: string) => `${basePath}${path}`;
+
+const copy = lang === 'zh'
+  ? {
+      titleFirst: '降低地震反應',
+      titleSecond: '守護關鍵設備',
+      description: '以工程控制降低地震對關鍵設備與營運的影響',
+    }
+  : {
+      titleFirst: 'Lower Seismic Response',
+      titleSecond: 'Protect Critical Equipment',
+      description: 'Engineering Stability for Critical Operations',
+    };
+---
+
+<section class="hero" data-language-section="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1>{copy.titleFirst}<br />{copy.titleSecond}</h1>
+      <p>{copy.description}</p>
+    </div>
+
+    <div class="hero-video-wrapper">
+      <video id="hero-video" autoplay muted loop playsinline>
+        <source src={asset('/picture/index/hero_boomerang.webm')} type="video/webm" />
+        <source src={asset('/picture/index/hero_boomerang.mp4')} type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="mouse-icon"><div class="wheel"></div></div>
+    <span class="en-text">SCROLL DOWN</span>
+  </div>
+</section>

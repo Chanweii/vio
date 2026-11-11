@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 
 export interface Props {
@@ -10,8 +9,6 @@ export interface Props {
 }
 
 const { title, lang = 'zh-Hant', headerLang = 'zh', dataTheme = 'light' } = Astro.props;
-const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
-const mainScript = `${basePath}/js/main.js`;
 
 // 合併三個頁面原本各自宣告的 Material Symbols icon 子集,
 // 補上聯絡頁表單其實有用到、但原本 head 沒宣告的 upload_file / check_circle / send。
@@ -45,14 +42,13 @@ const fontHref = lang === 'en'
       href={`https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=${iconNames}`}
     />
 
-    <ClientRouter />
     <slot name="head" />
   </head>
 
   <body>
     <Header lang={headerLang} />
     <slot />
-    <script src={mainScript} is:inline></script>
+    <script src="../scripts/site.ts"></script>
     <slot name="scripts" />
   </body>
 </html>
