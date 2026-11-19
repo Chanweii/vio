@@ -47,8 +47,9 @@ const navItems =
 // 原始 English 版按鈕連到 "#"(尚未連到聯絡頁),中文版連到 contact.html。
 // 這裡保留原本行為,之後聯絡頁做好英文版時再改成 "/contact/"。
 const contactHref = lang === 'en' ? '#' : `${basePath}/contact/`;
-const lightLogo = `${basePath}/picture/index/logo_light.webp`;
-const darkLogo = `${basePath}/picture/index/logo_dark.webp`;
+const logoLanguage = lang === 'en' ? 'e' : 'c';
+const lightLogo = `${basePath}/picture/index/logo_light_${logoLanguage}.svg`;
+const darkLogo = `${basePath}/picture/index/logo_dark_${logoLanguage}.svg`;
 const contactLabel = lang === 'en' ? 'Contact Us' : '聯絡我們';
 const menuAriaLabel = lang === 'en' ? 'Menu' : '選單';
 const themeAriaLabel = lang === 'en' ? 'Toggle Theme' : '切換深淺模式';
